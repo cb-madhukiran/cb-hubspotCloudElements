@@ -9,11 +9,11 @@ let contact;
 let deal;
 let syncFields = "false";
 
-let HubspotStageToggle = (syncRuleForOrders.HubspotStageToggle != undefined) ? syncRuleForOrders.HubspotStageToggle : "true";
-let NoSubscription = (syncRulesContacts.LifecycleStage.NoSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let TrialSubscription = (syncRulesContacts.LifecycleStage.TrialSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let ActiveSubscription = (syncRulesContacts.LifecycleStage.ActiveSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let CanceledSubscription = (syncRulesContacts.LifecycleStage.CanceledSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let HubspotStageToggle = (syncRuleForOrders.HubspotStageToggle !== undefined) ? syncRuleForOrders.HubspotStageToggle : "true";
+let NoSubscription = (syncRulesContacts.LifecycleStage.NoSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let TrialSubscription = (syncRulesContacts.LifecycleStage.TrialSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let ActiveSubscription = (syncRulesContacts.LifecycleStage.ActiveSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let CanceledSubscription = (syncRulesContacts.LifecycleStage.CanceledSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
 
 let MappedFieldChargebee = (syncRulesContacts.MappedFieldChargebee !== undefined) ? syncRulesContacts.MappedFieldChargebee: "email";
 
@@ -500,10 +500,10 @@ let allowedStageToggleKeys = [
   }
   
   var GetToggleValues = (index)=>{
-    var allowedValues = _.partition(allowedStageToggleValues,(i)=>allowedStageToggleValues.indexOf(i)<index)
+    var allowedValues = _.partition(allowedStageToggleValues,(i)=>allowedStageToggleValues.indexOf(i)<index);
     var map = _.reduce(allowedValues[1], (result, key)=>{result[key.toLowerCase().replace(/\s/g, '')] = key; return result;}, {select : 'Select'});
     return map;
-  }
+  };
   
   TrialSubscriptionIndex = getIndex('TrialSubscription');
   
@@ -643,86 +643,7 @@ let card = {
               "defaultVal": HubspotStageToggle,
               "isDynamic":"true",
               "request": dynamicToggleRequest
-        },
-        // {
-        //     "dispName": "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
-        //     "req": "false",
-        //     "type": "TEXTLABEL",
-        //     "id": "HubSpotContactMatch-id"
-        //   },
-        //   {
-        //     "desc": "Has no subscription",
-        //     "req": "false",
-        //     "type": "DROPDOWN",
-        //     "id": "NoSubscription",
-        //     "allowedValues": {
-        //       "select": "Select",
-        //       "subscriber": "Subscriber",
-        //       "lead": "Lead",
-        //       "marketingqualifiedlead": "Marketing Qualified lead",
-        //       "salesqualifiedlead": "Sales Qualified lead",
-        //       "opportunity": "Opportunity",
-        //       "customer": "Customer",
-        //       "evangelist": "Evangelist",
-        //       "other": "Other"
-        //     },
-        //     "defaultVal": syncRulesContacts.LifecycleStage.NoSubscription
-        //   },
-        //   {
-        //     "desc": "Has an In-Trial subscription",
-        //     "req": "false",
-        //     "type": "DROPDOWN",
-        //     "id": "TrialSubscription",
-        //     "allowedValues": {
-        //       "select": "Select",
-        //       "subscriber": "Subscriber",
-        //       "lead": "Lead",
-        //       "marketingqualifiedlead": "Marketing Qualified lead",
-        //       "salesqualifiedlead": "Sales Qualified lead",
-        //       "opportunity": "Opportunity",
-        //       "customer": "Customer",
-        //       "evangelist": "Evangelist",
-        //       "other": "Other"
-        //     },
-        //     "defaultVal": syncRulesContacts.LifecycleStage.TrialSubscription
-        //   },
-        //   {
-        //     "desc": "Has an Active subscription",
-        //     "req": "false",
-        //     "type": "DROPDOWN",
-        //     "id": "ActiveSubscription",
-        //     "allowedValues": {
-        //       "select": "Select",
-        //       "subscriber": "Subscriber",
-        //       "lead": "Lead",
-        //       "marketingqualifiedlead": "Marketing Qualified lead",
-        //       "salesqualifiedlead": "Sales Qualified lead",
-        //       "opportunity": "Opportunity",
-        //       "customer": "Customer",
-        //       "evangelist": "Evangelist",
-        //       "other": "Other"
-        //     },
-        //     "defaultVal": syncRulesContacts.LifecycleStage.ActiveSubscription
-        //   },
-        //   {
-        //     "desc": "Has a Cancelled subscription",
-        //     "req": "false",
-        //     "type": "DROPDOWN",
-        //     "id": "CanceledSubscription",
-        //     "allowedValues": {
-        //       "select": "Select",
-        //       "subscriber": "Subscriber",
-        //       "lead": "Lead",
-        //       "marketingqualifiedlead": "Marketing Qualified lead",
-        //       "salesqualifiedlead": "Sales Qualified lead",
-        //       "opportunity": "Opportunity",
-        //       "customer": "Customer",
-        //       "evangelist": "Evangelist",
-        //       "other": "Other"
-        //     },
-        //     "defaultVal": syncRulesContacts.LifecycleStage.CanceledSubscription
-        //   },
-
+        }
         ]
       },
       "id": "check1",
@@ -998,6 +919,4 @@ if (steps.GetCBOrder.response.code === 200 && steps.GetCBOrder.response.body.ord
   });
 
 }
-
 done(card);
-//done({"ll":customefields});
