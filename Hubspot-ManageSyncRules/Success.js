@@ -10,10 +10,6 @@ let deal;
 let syncFields = "false";
 
 let HubspotStageToggle = (syncRuleForOrders.HubspotStageToggle !== undefined) ? syncRuleForOrders.HubspotStageToggle : "true";
-let NoSubscription = (syncRulesContacts.LifecycleStage.NoSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let TrialSubscription = (syncRulesContacts.LifecycleStage.TrialSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let ActiveSubscription = (syncRulesContacts.LifecycleStage.ActiveSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
-let CanceledSubscription = (syncRulesContacts.LifecycleStage.CanceledSubscription !== undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
 
 let MappedFieldChargebee = (syncRulesContacts.MappedFieldChargebee !== undefined) ? syncRulesContacts.MappedFieldChargebee: "email";
 
