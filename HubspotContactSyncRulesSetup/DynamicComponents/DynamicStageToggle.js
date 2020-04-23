@@ -99,7 +99,7 @@ var CancelledSubscriptionStageToggleMap = GetToggleValues(CancelledSubscriptionI
 let dynamicToggleRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
-    apiUrl: cloudElementsUrl+"/hubpspot/stagestoggle",
+    apiUrl: cloudElementsUrl+"/hubspot/stagestoggle",
     type: "GET",
     headers: {
       "Elements-Formula-Instance-Id": instanceId,
@@ -220,7 +220,7 @@ let stages = [
         ]
     };
 
-if(HubspotStageToggle == true || HubspotStageToggle == "true")
+if(HubspotStageToggle === "true")
 {
     let newParams = _.concat(card.cards[0].card.params, stages);
     card.cards[0].card.params = newParams

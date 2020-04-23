@@ -1,3 +1,4 @@
+const _ = require('lodash');
 let cloudElements = steps.getConfigApi.data.third_party_configuration.config_json.cloudElements;
 let syncRulesContacts = cloudElements.syncRulesContacts;
 let syncRulesDeals = cloudElements.syncRulesDeals;
@@ -7,6 +8,12 @@ let company;
 let contact;
 let deal;
 let syncFields = "false";
+
+let HubspotStageToggle = (syncRuleForOrders.HubspotStageToggle != undefined) ? syncRuleForOrders.HubspotStageToggle : "true";
+let NoSubscription = (syncRulesContacts.LifecycleStage.NoSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let TrialSubscription = (syncRulesContacts.LifecycleStage.TrialSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let ActiveSubscription = (syncRulesContacts.LifecycleStage.ActiveSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
+let CanceledSubscription = (syncRulesContacts.LifecycleStage.CanceledSubscription != undefined) ? syncRulesContacts.LifecycleStage.NoSubscription : 'select'
 
 let MappedFieldChargebee = (syncRulesContacts.MappedFieldChargebee !== undefined) ? syncRulesContacts.MappedFieldChargebee: "email";
 
@@ -430,6 +437,154 @@ let DoNothing = {
   ]
 };
 
+let allowedStageToggleKeys = [
+    "select",
+    "subscriber",
+    "lead",
+    "marketingqualifiedlead",
+    "salesqualifiedlead",
+    "opportunity",
+    "customer",
+    "evangelist",
+    "other",
+  ];
+  
+   let allowedStageToggleValues = [
+      "Select",
+      "Subscriber",
+      "Lead",
+      "Marketing Qualified lead",
+      "Sales Qualified lead",
+      "Opportunity",
+      "Customer",
+      "Evangelist",
+      "Other",
+  ];
+  
+  let NoSubscriptionIndex = NoSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(NoSubscription) ;
+  let TrialSubscriptionIndex = TrialSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(TrialSubscription) ;
+  let ActiveSubscriptionIndex = ActiveSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(ActiveSubscription) ;
+  let CancelledSubscriptionIndex = CanceledSubscription.toLowerCase() == 'select'? -1 : allowedStageToggleKeys.indexOf(CanceledSubscription) ;
+  
+  let options = ['NoSubscription', 'TrialSubscription', 'ActiveSubscription', 'CancelledSubscription' ];
+  
+  // To compute Index 
+  if(TrialSubscriptionIndex <= NoSubscriptionIndex){
+      TrialSubscriptionIndex = -1;
+      TrialSubscription = 'select'
+  }
+    
+  if(ActiveSubscriptionIndex <= TrialSubscriptionIndex || ActiveSubscriptionIndex <= NoSubscriptionIndex){
+      ActiveSubscriptionIndex = -1;
+      ActiveSubscription = 'select' 
+  }
+    
+  if(CancelledSubscriptionIndex <= TrialSubscriptionIndex || CancelledSubscriptionIndex <= ActiveSubscriptionIndex || CancelledSubscriptionIndex <= NoSubscriptionIndex){ 
+      CancelledSubscriptionIndex = -1;
+      CanceledSubscription = 'select';
+  }
+  
+  arr = [ NoSubscriptionIndex, TrialSubscriptionIndex, ActiveSubscriptionIndex, CancelledSubscriptionIndex];
+  
+  
+  
+  var getIndex =  (subscriptionStatus)=>{
+      for(var i = options.indexOf(subscriptionStatus)-1; i < options.indexOf(subscriptionStatus) ;i--){
+        if(arr[i] == -1){
+            continue;
+        } else{
+            return arr[i] +1;
+        }
+    }
+    return -1;
+  }
+  
+  var GetToggleValues = (index)=>{
+    var allowedValues = _.partition(allowedStageToggleValues,(i)=>allowedStageToggleValues.indexOf(i)<index)
+    var map = _.reduce(allowedValues[1], (result, key)=>{result[key.toLowerCase().replace(/\s/g, '')] = key; return result;}, {select : 'Select'});
+    return map;
+  }
+  
+  TrialSubscriptionIndex = getIndex('TrialSubscription');
+  
+  ActiveSubscriptionIndex = getIndex('ActiveSubscription');
+  
+  CancelledSubscriptionIndex = getIndex('CancelledSubscription');
+  
+  var NoSubscriptionStageToggleMap = _.reduce(allowedStageToggleValues, (result, key)=>{result[key.toLowerCase().replace(/\s/g, '')] = key; return result;}, {select : 'Select'});
+  
+  var TrialSubscriptionStageToggleMap = GetToggleValues(TrialSubscriptionIndex)
+  
+  var ActiveSubscriptionStageToggleMap = GetToggleValues(ActiveSubscriptionIndex)
+  
+  var CancelledSubscriptionStageToggleMap = GetToggleValues(CancelledSubscriptionIndex)
+
+  
+let dynamicToggleRequest =  {
+    type: "ON_CHANGE_FETCH_INPUT",
+    apiEndPoint: {
+      apiUrl: steps.getFormulaDetails.dynamicToggle.url,
+      type: "GET",
+      headers: {
+        "Elements-Formula-Instance-Id": steps.getFormulaDetails.dynamicToggle.id,
+      }
+    },
+  };
+
+let stages = [
+    {
+      dispName:
+        "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
+      req: "false",
+      type: "TEXTLABEL",
+      id: "HubSpotContactMatch-id",
+    },
+    {
+      dispName: '<p style="padding-left: 10px;">  Has no subscription',
+      req: "false",
+      type: "DROPDOWN",
+      id: "NoSubscription",
+      isMuted: "true",
+      allowedValues: NoSubscriptionStageToggleMap,
+      defaultVal: NoSubscription,
+      isDynamic : "true",
+      request : dynamicToggleRequest
+    },
+    {
+      dispName: '<p style="padding-left: 10px;"> Has an In-Trial subscription',
+      req: "false",
+      type: "DROPDOWN",
+      id: "TrialSubscription",
+      isMuted: "true",
+      allowedValues: TrialSubscriptionStageToggleMap,
+      defaultVal: TrialSubscription,
+      isDynamic : "true",
+      request : dynamicToggleRequest
+    },
+    {
+      dispName: '<p style="padding-left: 10px;"> Has an Active subscription',
+      req: "false",
+      type: "DROPDOWN",
+      id: "ActiveSubscription",
+      isMuted: "true",
+      allowedValues: ActiveSubscriptionStageToggleMap,
+      defaultVal: ActiveSubscription,
+      isDynamic : "true",
+      request : dynamicToggleRequest
+    },
+    {
+      dispName: '<p style="padding-left: 10px;"> Has a Cancelled subscription',
+      req: "false",
+      type: "DROPDOWN",
+      id: "CanceledSubscription",
+      isMuted: "true",
+      allowedValues: CancelledSubscriptionStageToggleMap,
+      defaultVal: CanceledSubscription,
+      isDynamic : "true",
+      request : dynamicToggleRequest
+    },
+  ];
+
 let card = {
   cards: [
     {
@@ -446,7 +601,7 @@ let card = {
     },
     {
       "card": {
-        "type": "INPUT",
+        "type": "DYNAMIC_INPUT",
         "params": [
           {
             "dispName": "Choose customers you'd like to sync",
@@ -480,84 +635,93 @@ let card = {
             },
             "defaultVal": syncRulesContacts.HubSpotContactMatch
           },
-          {
-            "dispName": "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
-            "req": "false",
-            "type": "TEXTLABEL",
-            "id": "HubSpotContactMatch-id"
-          },
-          {
-            "desc": "Has no subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "NoSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.NoSubscription
-          },
-          {
-            "desc": "Has an In-Trial subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "TrialSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.TrialSubscription
-          },
-          {
-            "desc": "Has an Active subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "ActiveSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.ActiveSubscription
-          },
-          {
-            "desc": "Has a Cancelled subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "CanceledSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.CanceledSubscription
-          },
+          {       
+            "dispName":"Sync and Update Lifecycle stages in Hubspot",
+              "desc":"You can map subscription status of your Chargebee customers to the different lifecycle stages of a contact in Hubspot",
+              "type":"TOGGLE",
+              "id":"HubspotStageToggle",
+              "defaultVal": HubspotStageToggle,
+              "isDynamic":"true",
+              "request": dynamicToggleRequest
+        },
+        // {
+        //     "dispName": "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
+        //     "req": "false",
+        //     "type": "TEXTLABEL",
+        //     "id": "HubSpotContactMatch-id"
+        //   },
+        //   {
+        //     "desc": "Has no subscription",
+        //     "req": "false",
+        //     "type": "DROPDOWN",
+        //     "id": "NoSubscription",
+        //     "allowedValues": {
+        //       "select": "Select",
+        //       "subscriber": "Subscriber",
+        //       "lead": "Lead",
+        //       "marketingqualifiedlead": "Marketing Qualified lead",
+        //       "salesqualifiedlead": "Sales Qualified lead",
+        //       "opportunity": "Opportunity",
+        //       "customer": "Customer",
+        //       "evangelist": "Evangelist",
+        //       "other": "Other"
+        //     },
+        //     "defaultVal": syncRulesContacts.LifecycleStage.NoSubscription
+        //   },
+        //   {
+        //     "desc": "Has an In-Trial subscription",
+        //     "req": "false",
+        //     "type": "DROPDOWN",
+        //     "id": "TrialSubscription",
+        //     "allowedValues": {
+        //       "select": "Select",
+        //       "subscriber": "Subscriber",
+        //       "lead": "Lead",
+        //       "marketingqualifiedlead": "Marketing Qualified lead",
+        //       "salesqualifiedlead": "Sales Qualified lead",
+        //       "opportunity": "Opportunity",
+        //       "customer": "Customer",
+        //       "evangelist": "Evangelist",
+        //       "other": "Other"
+        //     },
+        //     "defaultVal": syncRulesContacts.LifecycleStage.TrialSubscription
+        //   },
+        //   {
+        //     "desc": "Has an Active subscription",
+        //     "req": "false",
+        //     "type": "DROPDOWN",
+        //     "id": "ActiveSubscription",
+        //     "allowedValues": {
+        //       "select": "Select",
+        //       "subscriber": "Subscriber",
+        //       "lead": "Lead",
+        //       "marketingqualifiedlead": "Marketing Qualified lead",
+        //       "salesqualifiedlead": "Sales Qualified lead",
+        //       "opportunity": "Opportunity",
+        //       "customer": "Customer",
+        //       "evangelist": "Evangelist",
+        //       "other": "Other"
+        //     },
+        //     "defaultVal": syncRulesContacts.LifecycleStage.ActiveSubscription
+        //   },
+        //   {
+        //     "desc": "Has a Cancelled subscription",
+        //     "req": "false",
+        //     "type": "DROPDOWN",
+        //     "id": "CanceledSubscription",
+        //     "allowedValues": {
+        //       "select": "Select",
+        //       "subscriber": "Subscriber",
+        //       "lead": "Lead",
+        //       "marketingqualifiedlead": "Marketing Qualified lead",
+        //       "salesqualifiedlead": "Sales Qualified lead",
+        //       "opportunity": "Opportunity",
+        //       "customer": "Customer",
+        //       "evangelist": "Evangelist",
+        //       "other": "Other"
+        //     },
+        //     "defaultVal": syncRulesContacts.LifecycleStage.CanceledSubscription
+        //   },
 
         ]
       },
@@ -656,6 +820,11 @@ let card = {
   "dismissText": "Dismiss"
 };
 
+if(HubspotStageToggle === "true")
+{
+    let newParams = _.concat(card.cards[1].card.params, stages);
+    card.cards[1].card.params = newParams
+}
 
 let feildsCard = {
   "card": {

@@ -156,7 +156,7 @@ let card;
 let dynamicToggleRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
-    apiUrl: cloudElementsUrl+'/hubpspot/stagestoggle',
+    apiUrl: cloudElementsUrl+'/hubspot/stagestoggle',
     type: "GET",
     headers: {
       "Elements-Formula-Instance-Id": 435337,

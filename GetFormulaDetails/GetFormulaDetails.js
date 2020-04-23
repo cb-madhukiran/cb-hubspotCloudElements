@@ -9,6 +9,10 @@ let props  = {
    url: cloud+"/elements/api-v2/hubspot/saveDealRules",
    id:"412129"
   },
+  dynamicToggle: {
+    url: cloud+"/elements/api-v2/hubspot/stagestoggle",
+    id:"435337"
+  },
   dealoptions:{
     url :cloud + "/elements/api-v2/hubspot/dealoptions",
     id:"412128"
