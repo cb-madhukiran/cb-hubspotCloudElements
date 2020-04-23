@@ -12,6 +12,25 @@ let requestType = "POST";
 let syncRuleForFields = {
   sync : steps.saveConfigParams.request.query.syncMoreFields,
 };
+let HubspotStageToggle = steps.saveConfigParams.request.query.HubspotStageToggle;
+
+let NoSubscription;
+let TrialSubscription;
+let ActiveSubscription;
+let CanceledSubscription;
+
+if(HubspotStageToggle === "true"){
+    NoSubscription= trigger.args.request.query.NoSubscription;
+    TrialSubscription= trigger.args.request.query.TrialSubscription;
+    ActiveSubscription= trigger.args.request.query.ActiveSubscription ;
+    CanceledSubscription= trigger.args.request.query.CanceledSubscription;
+}
+else{
+    NoSubscription = 'select';
+    TrialSubscription = 'select';
+    ActiveSubscription = 'select';
+    CanceledSubscription = 'select';
+}
 
 let company= steps.saveConfigParams.request.query.company;
 if(company !== undefined && company !== ""){
@@ -87,11 +106,12 @@ let params = {
       CustomersToSync: steps.saveConfigParams.request.query.CustomersToSync || "All_Customers",
       HubSpotContactNoMatch: steps.saveConfigParams.request.query.HubSpotContactNoMatch || "Create_contact",
       HubSpotContactMatch: steps.saveConfigParams.request.query.HubSpotContactMatch || "Update_empty_Hubspot_fields",
+      HubspotStageToggle : HubspotStageToggle,
       LifecycleStage: {
-        NoSubscription: steps.saveConfigParams.request.query.NoSubscription,
-        TrialSubscription: steps.saveConfigParams.request.query.TrialSubscription,
-        ActiveSubscription: steps.saveConfigParams.request.query.ActiveSubscription,
-        CanceledSubscription: steps.saveConfigParams.request.query.CanceledSubscription
+        NoSubscription: NoSubscription,
+        TrialSubscription: TrialSubscription,
+        ActiveSubscription: ActiveSubscription,
+        CanceledSubscription: CanceledSubscription
       },
       MappedFieldChargebee: (steps.saveConfigParams.request.query.MappedFieldChargebee !== undefined) ? steps.saveConfigParams.request.query.MappedFieldChargebee : undefined,
       MappedFieldHubspot: (steps.saveConfigParams.request.query.MappedFieldHubspot) ? steps.saveConfigParams.request.query.MappedFieldHubspot : undefined

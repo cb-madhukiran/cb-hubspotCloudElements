@@ -8,11 +8,7 @@ let syncRulesContacts =
 let CustomersToSync = "All_Customers";
 let HubSpotContactNoMatch = "Create_contact";
 let HubSpotContactMatch = "Update_empty_Hubspot_fields";
-let HubspotStageToggle = false;
-let NoSubscription;
-let TrialSubscription;
-let ActiveSubscription;
-let CanceledSubscription;
+let HubspotStageToggle = "false";
 let MappedFieldChargebee = "email";
 let MappedFieldHubspot = "email";
 
@@ -21,13 +17,6 @@ if (syncRulesContacts !== undefined) {
   HubSpotContactNoMatch = syncRulesContacts.HubSpotContactNoMatch;
   HubSpotContactMatch = syncRulesContacts.HubSpotContactMatch;
   HubspotStageToggle = syncRulesContacts.HubspotStageToggle;
-  let LifecycleStage = syncRulesContacts.LifecycleStage;
-  if (LifecycleStage !== undefined) {
-    NoSubscription = LifecycleStage.NoSubscription;
-    TrialSubscription = LifecycleStage.TrialSubscription;
-    ActiveSubscription = LifecycleStage.ActiveSubscription;
-    CanceledSubscription = LifecycleStage.CanceledSubscription;
-  }
   MappedFieldChargebee =
     syncRulesContacts.MappedFieldChargebee !== undefined
       ? syncRulesContacts.MappedFieldChargebee
@@ -36,19 +25,6 @@ if (syncRulesContacts !== undefined) {
     syncRulesContacts.MappedFieldHubspot !== undefined
       ? syncRulesContacts.MappedFieldHubspot
       : "email";
-}
-
-if (NoSubscription === undefined) {
-  NoSubscription = "select";
-}
-if (TrialSubscription === undefined) {
-  TrialSubscription = "select";
-}
-if (ActiveSubscription === undefined) {
-  ActiveSubscription = "select";
-}
-if (CanceledSubscription === undefined) {
-  CanceledSubscription = "select";
 }
 
 let CustomFields =
@@ -70,96 +46,16 @@ ChargebeeMappingValues = Object.assign(
   CustomFields_customer
 );
 
-let allowedStageToggleKeys = [
-    "select",
-    "subscriber",
-    "lead",
-    "marketingqualifiedlead",
-    "salesqualifiedlead",
-    "opportunity",
-    "customer",
-    "evangelist",
-    "other",
-  ];
-  
-   let allowedStageToggleValues = [
-      "Select",
-      "Subscriber",
-      "Lead",
-      "Marketing Qualified lead",
-      "Sales Qualified lead",
-      "Opportunity",
-      "Customer",
-      "Evangelist",
-      "Other",
-  ];
-  
-  let NoSubscriptionIndex = NoSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(NoSubscription) ;
-  let TrialSubscriptionIndex = TrialSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(TrialSubscription) ;
-  let ActiveSubscriptionIndex = ActiveSubscription.toLowerCase() == 'select' ? -1 : allowedStageToggleKeys.indexOf(ActiveSubscription) ;
-  let CancelledSubscriptionIndex = CanceledSubscription.toLowerCase() == 'select'? -1 : allowedStageToggleKeys.indexOf(CanceledSubscription) ;
-  
-  let options = ['NoSubscription', 'TrialSubscription', 'ActiveSubscription', 'CancelledSubscription' ];
-  
-  // To compute Index 
-  if(TrialSubscriptionIndex <= NoSubscriptionIndex){
-      TrialSubscriptionIndex = -1;
-  }
-    
-  if(ActiveSubscriptionIndex <= TrialSubscriptionIndex || ActiveSubscriptionIndex <= NoSubscriptionIndex){
-      ActiveSubscriptionIndex = -1; 
-  }
-    
-  if(CancelledSubscriptionIndex <= TrialSubscriptionIndex || CancelledSubscriptionIndex <= ActiveSubscriptionIndex || CancelledSubscriptionIndex <= NoSubscriptionIndex){ 
-      CancelledSubscriptionIndex = -1;
-  }
-  
-  arr = [ NoSubscriptionIndex, TrialSubscriptionIndex, ActiveSubscriptionIndex, CancelledSubscriptionIndex];
-  
-  
-  
-  var getIndex =  (subscriptionStatus)=>{
-      for(var i = options.indexOf(subscriptionStatus)-1; i < options.indexOf(subscriptionStatus) ;i--){
-        if(arr[i] == -1){
-            continue;
-        } else{
-            return arr[i] +1;
-        }
-    }
-    return -1;
-  }
-  
-  var GetToggleValues = (index)=>{
-    var allowedValues = _.partition(allowedStageToggleValues,(i)=>allowedStageToggleValues.indexOf(i)<index)
-    var map = _.reduce(allowedValues[1], (result, key)=>{result[key.toLowerCase().replace(/\s/g, '')] = key; return result;}, {select : 'Select'});
-    return map;
-  }
-  
-  TrialSubscriptionIndex = getIndex('TrialSubscription');
-  
-  ActiveSubscriptionIndex = getIndex('ActiveSubscription');
-  
-  CancelledSubscriptionIndex = getIndex('CancelledSubscription');
-  
-  var NoSubscriptionStageToggleMap = _.reduce(allowedStageToggleValues, (result, key)=>{result[key.toLowerCase().replace(/\s/g, '')] = key; return result;}, {select : 'Select'});
-  
-  var TrialSubscriptionStageToggleMap = GetToggleValues(TrialSubscriptionIndex);
-  
-  var ActiveSubscriptionStageToggleMap = GetToggleValues(ActiveSubscriptionIndex);
-  
-  var CancelledSubscriptionStageToggleMap = GetToggleValues(CancelledSubscriptionIndex);
-  
-let cloudElementsUrl = "https://staging.cloud-elements.com/elements/api-v2"
 
 let card;
 
 let dynamicToggleRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
-    apiUrl: cloudElementsUrl+'/hubspot/stagestoggle',
+    apiUrl: steps.Props.dynamicToggle.url,
     type: "GET",
     headers: {
-      "Elements-Formula-Instance-Id": 435337,
+      "Elements-Formula-Instance-Id": steps.Props.dynamicToggle.id,
     },
     input: {
       id: "chargebee",
@@ -169,59 +65,7 @@ let dynamicToggleRequest =  {
   },
 };
 
-let stages = [
-  {
-    dispName:
-      "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
-    req: "false",
-    type: "TEXTLABEL",
-    id: "HubSpotContactMatch-id",
-  },
-  {
-    dispName: '<p style="padding-left: 10px;">  Has no subscription',
-    req: "false",
-    type: "DROPDOWN",
-    id: "NoSubscription",
-    isMuted: "true",
-    allowedValues: NoSubscriptionStageToggleMap,
-    defaultVal: NoSubscription,
-    isDynamic : "true",
-    request : dynamicToggleRequest
-  },
-  {
-    dispName: '<p style="padding-left: 10px;"> Has an In-Trial subscription',
-    req: "false",
-    type: "DROPDOWN",
-    id: "TrialSubscription",
-    isMuted: "true",
-    allowedValues: TrialSubscriptionStageToggleMap,
-    defaultVal: TrialSubscription,
-    isDynamic : "true",
-    request : dynamicToggleRequest
-  },
-  {
-    dispName: '<p style="padding-left: 10px;"> Has an Active subscription',
-    req: "false",
-    type: "DROPDOWN",
-    id: "ActiveSubscription",
-    isMuted: "true",
-    allowedValues: ActiveSubscriptionStageToggleMap,
-    defaultVal: ActiveSubscription,
-    isDynamic : "true",
-    request : dynamicToggleRequest
-  },
-  {
-    dispName: '<p style="padding-left: 10px;"> Has a Cancelled subscription',
-    req: "false",
-    type: "DROPDOWN",
-    id: "CanceledSubscription",
-    isMuted: "true",
-    allowedValues: CancelledSubscriptionStageToggleMap,
-    defaultVal: CanceledSubscription,
-    isDynamic : "true",
-    request : dynamicToggleRequest
-  },
-];
+let stages =  steps.getLifeCycleStages.stages;
 
 card = {
   cards: [
@@ -354,7 +198,5 @@ if(HubspotStageToggle === "true"){
     let newParams = _.concat(card.cards[1].card.params, stages);
     card.cards[1].card.params = newParams;
 }
-
-console.log(card)
 
 done(card);
