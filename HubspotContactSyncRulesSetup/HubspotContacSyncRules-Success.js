@@ -49,7 +49,7 @@ ChargebeeMappingValues = Object.assign(
 
 let card;
 
-let dynamicToggleRequest =  {
+let dynamicRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
     apiUrl: steps.Props.dynamicToggle.url,
@@ -132,7 +132,7 @@ card = {
             id: "HubspotStageToggle",
             defaultVal: HubspotStageToggle,
             isDynamic: "true",
-            request: dynamicToggleRequest
+            request: dynamicRequest
           },
         ],
       },

@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-let getRequetArgs = (arg)=>{
+let getRequestArgs = (arg)=>{
     let triggerArgument = trigger.args[arg];
         if(triggerArgument !== undefined) 
             return triggerArgument;
@@ -9,17 +9,17 @@ let getRequetArgs = (arg)=>{
         }
     }
 
-let NoSubscription = getRequetArgs('NoSubscription');
-let TrialSubscription = getRequetArgs('TrialSubscription');
-let ActiveSubscription = getRequetArgs('ActiveSubscription');
-let CanceledSubscription = getRequetArgs('CanceledSubscription');
+let NoSubscription = getRequestArgs('NoSubscription');
+let TrialSubscription = getRequestArgs('TrialSubscription');
+let ActiveSubscription = getRequestArgs('ActiveSubscription');
+let CanceledSubscription = getRequestArgs('CanceledSubscription');
 
 let cloudElementsUrl = steps.EnvProps.cloudElementsUrl;
 
-let instanceId = info.formulaInstanceId;
+let instanceId = steps.EnvProps.id;
 
-//Please ensure the keys and values are corresponsing values
-let allowedStageToggleKeys = [
+//Please ensure the keys order
+let allowedStageDropDownKeys = [
   "select",
   "subscriber",
   "lead",
@@ -30,25 +30,24 @@ let allowedStageToggleKeys = [
   "evangelist",
   "other",
 ];
-//Please ensure the keys and values are corresponsing values
- let allowedStageToggleValues = [
-    "Select",
-    "Subscriber",
-    "Lead",
-    "Marketing Qualified lead",
-    "Sales Qualified lead",
-    "Opportunity",
-    "Customer",
-    "Evangelist",
-    "Other",
-];
+ let allowedStageDropDownValues = {
+  select: "Select",
+  subscriber: "Subscriber",
+  lead: "Lead",
+  marketingqualifiedlead: "Marketing Qualified lead",
+  salesqualifiedlead: "Sales Qualified lead",
+  opportunity: "Opportunity",
+  customer: "Customer",
+  evangelist: "Evangelist",
+  other: "Other"
+}
 
 let getIndexKey = (subscriptionStatus)=> {
     if(subscriptionStatus.toLowerCase() === 'select'){
         return -1;
     }
     else{
-        return allowedStageToggleKeys.indexOf(subscriptionStatus) ;
+        return allowedStageDropDownKeys.indexOf(subscriptionStatus) ;
     }
 }
 
@@ -63,6 +62,7 @@ let SubscriptionStatusOptions = ['NoSubscription', 'TrialSubscription', 'ActiveS
 let arr = [ NoSubscriptionIndex, TrialSubscriptionIndex, ActiveSubscriptionIndex, CancelledSubscriptionIndex];
 
 //Logic to reset if any incorrect order
+// Eg arr = [5, 4 , 4 , 3] => arr = [5, -1, -1, -1]
 for(var i = arr.length-1 ; i > 0; i--){
     for(var j = i-1 ; j>=0; j-- ){
         if(arr[j] >= arr[i]){
@@ -86,7 +86,7 @@ if(arr[SubscriptionStatusOptions.indexOf('CanceledSubscription')] == -1){
 
 //There are two steps to compute this index
 // first we find the first available index from the array
-// and compute the getToggleValues 
+// and compute the allowed values for corresponding drop down
 
 var getIndex =  (subscriptionStatus)=>{
     for(var i = SubscriptionStatusOptions.indexOf(subscriptionStatus)-1; i>=0;i--){
@@ -99,26 +99,28 @@ var getIndex =  (subscriptionStatus)=>{
   return -1;
 }
 
-var GetToggleValues = (index)=>{  
-  var allowedValues = _.partition(allowedStageToggleValues,(i)=>allowedStageToggleValues.indexOf(i)<index)
-  var map = _.reduce(allowedValues[1], (result, value)=>{
-      var key = allowedStageToggleKeys[allowedStageToggleValues.indexOf(value)]
-      result[key] = value; 
-      return result;
-    }, {select : 'Select'});
-  return map;
+var getDropDownValues = (index)=>{  
+  let allValues = _.partition(allowedStageDropDownKeys,(i)=>allowedStageDropDownKeys.indexOf(i)<index);
+  let allowedValues = allValues[1];
+
+  let result = {select : 'Select'}
+
+    allowedValues.forEach((element)=>{
+      result[element]=allowedStageDropDownValues[element];
+    })
+    return result;
 }
 
 
-var NoSubscriptionStageToggleMap = GetToggleValues(0) // can contain all values for No subscription
+let NoSubscriptionStageDropDownMap = getDropDownValues(0) // can contain all values for No subscription
 
-var TrialSubscriptionStageToggleMap = GetToggleValues(getIndex('TrialSubscription'));  
+let TrialSubscriptionStageDropDownMap = getDropDownValues(getIndex('TrialSubscription'));  
 
-var ActiveSubscriptionStageToggleMap = GetToggleValues(getIndex('ActiveSubscription'));
+let ActiveSubscriptionStageDropDownMap = getDropDownValues(getIndex('ActiveSubscription'));
 
-var CancelledSubscriptionStageToggleMap = GetToggleValues(getIndex('CanceledSubscription'));
+let CancelledSubscriptionStageDropDownMap = getDropDownValues(getIndex('CanceledSubscription'));
 
-let dynamicToggleRequest =  {
+let dynamicRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
     apiUrl: cloudElementsUrl+"/hubspot/stagestoggle",
@@ -143,10 +145,10 @@ let stages = [
     type: "DROPDOWN",
     id: "NoSubscription",
     isMuted: "true",
-    allowedValues: NoSubscriptionStageToggleMap,
+    allowedValues: NoSubscriptionStageDropDownMap,
     defaultVal: NoSubscription,
     isDynamic : "true",
-    request : dynamicToggleRequest
+    request : dynamicRequest
   },
   {
     dispName: '<p style="padding-left: 10px;"> Has an In-Trial subscription',
@@ -154,10 +156,10 @@ let stages = [
     type: "DROPDOWN",
     id: "TrialSubscription",
     isMuted: "true",
-    allowedValues: TrialSubscriptionStageToggleMap,
+    allowedValues: TrialSubscriptionStageDropDownMap,
     defaultVal: TrialSubscription,
     isDynamic : "true",
-    request : dynamicToggleRequest
+    request : dynamicRequest
   },
   {
     dispName: '<p style="padding-left: 10px;"> Has an Active subscription',
@@ -165,10 +167,10 @@ let stages = [
     type: "DROPDOWN",
     id: "ActiveSubscription",
     isMuted: "true",
-    allowedValues: ActiveSubscriptionStageToggleMap,
+    allowedValues: ActiveSubscriptionStageDropDownMap,
     defaultVal: ActiveSubscription,
     isDynamic : "true",
-    request : dynamicToggleRequest
+    request : dynamicRequest
   },
   {
     dispName: '<p style="padding-left: 10px;"> Has a Cancelled subscription',
@@ -176,10 +178,10 @@ let stages = [
     type: "DROPDOWN",
     id: "CanceledSubscription",
     isMuted: "true",
-    allowedValues: CancelledSubscriptionStageToggleMap,
+    allowedValues: CancelledSubscriptionStageDropDownMap,
     defaultVal: CanceledSubscription,
     isDynamic : "true",
-    request : dynamicToggleRequest
+    request : dynamicRequest
   },
 ];
 done({stages:stages});

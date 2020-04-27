@@ -1,17 +1,23 @@
 
 const _ = require('lodash');
 
-let HubspotStageToggle = (trigger.args.request.query['HubspotStageToggle'] !== undefined) ? trigger.args.request.query.HubspotStageToggle : "false";
-let CustomersToSync = (trigger.args.request.query['CustomersToSync'] !== undefined) ? trigger.args.request.query['CustomersToSync'] : "All_Customers";
-let HubSpotContactNoMatch = (trigger.args.request.query['HubSpotContactNoMatch'] !== undefined) ? trigger.args.request.query['HubSpotContactNoMatch'] : "Create_contact";
-let HubSpotContactMatch = (trigger.args.request.query['HubSpotContactMatch'] !== undefined) ? trigger.args.request.query['HubSpotContactMatch'] : "Update_empty_Hubspot_fields";
+let query = trigger.args.request.query;
+let getDefault = (param,defaultValue)=>{ 
+  if(query[param] !== undefined) { 
+    return query[param];}
+  return defaultValue;
+}
+let HubspotStageToggle = getDefault("HubspotStageToggle", "false");
+let CustomersToSync = getDefault("CustomersToSync", "All_Customers");
+let HubSpotContactNoMatch = getDefault("HubSpotContactNoMatch", "Create_contact");
+let HubSpotContactMatch = getDefault("HubSpotContactMatch", "Update_empty_Hubspot_fields");
 
 let cloudElementsUrl = steps.EnvProps.cloudElementsUrl;
 let card;
 
 let instanceId = info.formulaInstanceId;
 
-let dynamicToggleRequest =  {
+let dynamicRequest =  {
   type: "ON_CHANGE_FETCH_INPUT",
   apiEndPoint: {
     apiUrl: cloudElementsUrl+"/hubspot/stagestoggle",
@@ -72,7 +78,7 @@ let stages = steps.getLifeCycleStages.stages;
                               "id":"HubspotStageToggle",
                               "defaultVal": HubspotStageToggle,
                               "isDynamic":"true",
-                              "request": dynamicToggleRequest
+                              "request": dynamicRequest
                         }
                               
                     ]

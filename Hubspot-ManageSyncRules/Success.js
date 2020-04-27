@@ -9,11 +9,16 @@ let contact;
 let deal;
 let syncFields = "false";
 
-let HubspotStageToggle = (syncRuleForOrders.HubspotStageToggle !== undefined) ? syncRuleForOrders.HubspotStageToggle : "true";
+let getDefault = (param,defaultValue)=>{ 
+  if(param !== undefined) { 
+    return param;}
+  return defaultValue;
+}
+let HubspotStageToggle = getDefault(syncRulesContacts.HubspotStageToggle, "true");
 
-let MappedFieldChargebee = (syncRulesContacts.MappedFieldChargebee !== undefined) ? syncRulesContacts.MappedFieldChargebee: "email";
+let MappedFieldChargebee = getDefault(syncRulesContacts.MappedFieldChargebee, "email");
 
-let MappedFieldHubspot = (syncRulesContacts.MappedFieldHubspot !== undefined) ? syncRulesContacts.MappedFieldHubspot : "email";
+let MappedFieldHubspot = getDefault(syncRulesContacts.MappedFieldHubspot, "email");
 
 let cbcustomFields=steps.getCustomApi.data;
 if(cbcustomFields!==undefined && cbcustomFields.response !== undefined) {
@@ -716,7 +721,7 @@ for(var i=0;i<customCompanyFields.length;i++){
 
   for(var j=0;j<fld.fields.length;j++){
       var es = fld.fields[j];
-      var desc =  fld.label + " " + es[0].replace(/_/g, " ");
+      let desc =  fld.label + " " + es[0].replace(/_/g, " ");
       var id = fld.key+"_"+es[0];    
       let companyObj = {
           "type": "CHECKBOX",
