@@ -1,0 +1,2985 @@
+HubSpotFullSyncMetrics
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431462, "priya-test-Sync": 429772, "actkey-test-Sync": 431173, "christopher-test-Sync": 433383, "qb-can-test-Sync": 417952, "lakshmipriya-test-Sync": 437195, "qb-us-test-Sync": 433174, "actcamp-test-Sync": 421156, "shamimtest": 418149, "cbsite-test-Sync": 434760, "navee-test-Sync": 437765, "aparna11-test-Sync": 437657}
+Delete	mmmm-test-Sync
+	416454
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416469
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416475
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416481
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416632
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	417129
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	417166
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	417946
+200 Successfully deleted 
+Skipping  qb-can-test-Sync 
+	 417952
+Skipping  shamimtest 
+	 418149
+Delete	mmmm-test-Sync
+	418720
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418892
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418898
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418910
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	418934
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419012
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419096
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419153
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419224
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419230
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419236
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419293
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419299
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419307
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419313
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419321
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419416
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419436
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419483
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419571
+200 Successfully deleted 
+Delete	priya-test-Sync
+	419854
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420139
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420147
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420196
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420297
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	420335
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420538
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420548
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420565
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420615
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420621
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420680
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420785
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420840
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420849
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420973
+200 Successfully deleted 
+Skipping  actcamp-test-Sync 
+	 421156
+Delete	christopher-test-Sync
+	421163
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421479
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421485
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421496
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	421503
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421524
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421536
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421544
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421588
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421590
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421598
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421604
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421714
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421752
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421891
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421979
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422020
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422036
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422117
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422671
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	422719
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423209
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	424063
+200 Successfully deleted 
+Delete	priya-test-Sync
+	425197
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	425965
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	425972
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426425
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426550
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426829
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427175
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427372
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427378
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	427384
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	427585
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427712
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427780
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	428064
+200 Successfully deleted 
+Delete	priya-test-Sync
+	428464
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	428538
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429164
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429216
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429301
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429380
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	429463
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429490
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429558
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429688
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429694
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429700
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429723
+200 Successfully deleted 
+Skipping  priya-test-Sync 
+	 429772
+Delete	lakshmipriya-test-Sync
+	429891
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429922
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429929
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429936
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429943
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429952
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429959
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	430830
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	431154
+200 Successfully deleted 
+Skipping  actkey-test-Sync 
+	 431173
+Delete	christopher-test-Sync
+	431322
+200 Successfully deleted 
+Skipping  mmmm-test-Sync 
+	 431462
+Delete	lakshmipriya-test-Sync
+	432189
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432902
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432917
+200 Successfully deleted 
+Skipping  qb-us-test-Sync 
+	 433174
+Delete	christopher-test-Sync
+	433379
+200 Successfully deleted 
+Skipping  christopher-test-Sync 
+	 433383
+Delete	lakshmipriya-test-Sync
+	433388
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	433399
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433475
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433484
+200 Successfully deleted 
+Skipping  cbsite-test-Sync 
+	 434760
+Delete	lakshmipriya-test-Sync
+	435755
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435769
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435984
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436215
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436637
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436643
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436875
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436883
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436888
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436898
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437038
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437158
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437169
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437178
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437185
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Sync 
+	 437195
+Delete	aparna11-test-Sync
+	437358
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437548
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437586
+200 Successfully deleted 
+Delete	navee-test-Sync
+	437632
+200 Successfully deleted 
+Skipping  aparna11-test-Sync 
+	 437657
+Skipping  navee-test-Sync 
+	 437765
+HubSpotFullSyncDeals-Revamped
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431461, "priya-test-Sync": 429771, "actkey-test-Sync": 431172, "actcamp-test-Sync": 421155, "qb-can-test-Sync": 417951, "lakshmipriya-test-Sync": 437194, "qb-us-test-Sync": 433173, "christopher-test-Sync": 433382, "cbsite-test-Sync": 434759, "pries-test": 416482, "navee-test-Sync": 437764, "aparna11-test-Sync": 437656}
+Skipping  pries-test 
+	 416482
+Delete	aparna11-test-Sync
+	416631
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417120
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	417128
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417151
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	417165
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	417945
+200 Successfully deleted 
+Skipping  qb-can-test-Sync 
+	 417951
+Delete	mmmm-test-Sync
+	418719
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418891
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418897
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418909
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	418933
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419011
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419095
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419152
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419223
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419229
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419235
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419292
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419298
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419306
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419312
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419320
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419415
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419435
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419482
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419570
+200 Successfully deleted 
+Delete	priya-test-Sync
+	419853
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420138
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420146
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420195
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420296
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	420334
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420537
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420547
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420564
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420614
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420620
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420679
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420784
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420839
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420848
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420972
+200 Successfully deleted 
+Skipping  actcamp-test-Sync 
+	 421155
+Delete	christopher-test-Sync
+	421162
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421478
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421484
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421495
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	421502
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421523
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421535
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421543
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421587
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421589
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421597
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421603
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421713
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421751
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421890
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421978
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422019
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422035
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422116
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422670
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	422718
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423208
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	424062
+200 Successfully deleted 
+Delete	priya-test-Sync
+	425196
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	425964
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	425971
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426424
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426549
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426828
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427174
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427371
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427377
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	427383
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	427584
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427711
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427779
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	428063
+200 Successfully deleted 
+Delete	priya-test-Sync
+	428463
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	428537
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429163
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429215
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429300
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429379
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	429462
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429489
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429557
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429687
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429693
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429699
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429722
+200 Successfully deleted 
+Skipping  priya-test-Sync 
+	 429771
+Delete	lakshmipriya-test-Sync
+	429890
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429921
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429928
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429935
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429942
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429951
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429958
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	430829
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	431153
+200 Successfully deleted 
+Skipping  actkey-test-Sync 
+	 431172
+Delete	christopher-test-Sync
+	431321
+200 Successfully deleted 
+Skipping  mmmm-test-Sync 
+	 431461
+Delete	lakshmipriya-test-Sync
+	432188
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432901
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432916
+200 Successfully deleted 
+Skipping  qb-us-test-Sync 
+	 433173
+Delete	christopher-test-Sync
+	433378
+200 Successfully deleted 
+Skipping  christopher-test-Sync 
+	 433382
+Delete	lakshmipriya-test-Sync
+	433387
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	433398
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433474
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433483
+200 Successfully deleted 
+Skipping  cbsite-test-Sync 
+	 434759
+Delete	lakshmipriya-test-Sync
+	435754
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435768
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435983
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436214
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436636
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436642
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436874
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436882
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436887
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436897
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437037
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437157
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437168
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437177
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437184
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Sync 
+	 437194
+Delete	aparna11-test-Sync
+	437357
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437547
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437585
+200 Successfully deleted 
+Delete	navee-test-Sync
+	437631
+200 Successfully deleted 
+Skipping  aparna11-test-Sync 
+	 437656
+Skipping  navee-test-Sync 
+	 437764
+HubspotValidate
+Retrive instaces of formula 
+{"actkey-test-Validate": 428059, "lakshmipriya-test-Validate": 427373, "qb-can-test-Validate": 417947, "actcamp-test-Validate": 421151, "mmmm-test-Validate": 419148, "priya-test-Validate": 425186, "qb-us-test-Validate": 427580, "aparna11-test-Validate": 421157, "christopher-test-Validate": 428040}
+Delete	actkey-test-Validate
+	412821
+200 Successfully deleted 
+Delete	priya-test-Validate
+	412843
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	412961
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	413243
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	413290
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	413296
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	413307
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	413314
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414563
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414578
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414579
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414585
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414607
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414613
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414656
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414682
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414722
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414778
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	414823
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414949
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414955
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	414971
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	414985
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415056
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415071
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415093
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415127
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415138
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415189
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415209
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415234
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415264
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415280
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	415343
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415351
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415370
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415371
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415419
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415430
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415467
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415478
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415739
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415740
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415742
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415750
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415756
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415760
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415771
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415786
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415792
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415798
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415853
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415859
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415865
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415872
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415874
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415890
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415901
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415903
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415926
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415934
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415950
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	415956
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415977
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	415978
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416059
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416061
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	416076
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416079
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416085
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416086
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416093
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416099
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416118
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416130
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416136
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416142
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416149
+200 Successfully deleted 
+Delete	qb-can-test-Validate
+	416161
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416165
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416178
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416184
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416223
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416234
+200 Successfully deleted 
+Delete	qb-can-test-Validate
+	416235
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416257
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416289
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416443
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	416449
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416464
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416470
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416476
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416483
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416499
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416542
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416548
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416582
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416588
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416594
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	416627
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	416762
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	417071
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	417078
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	417116
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	417124
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	417147
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	417153
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	417161
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	417736
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	417940
+200 Successfully deleted 
+Skipping  qb-can-test-Validate 
+	 417947
+Delete	lakshmipriya-test-Validate
+	418408
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418414
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	418715
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418843
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418872
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418878
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	418884
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	418885
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418893
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	418905
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418911
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418917
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418923
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	418929
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	418992
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	419091
+200 Successfully deleted 
+Skipping  mmmm-test-Validate 
+	 419148
+Delete	aparna11-test-Validate
+	419219
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	419225
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	419231
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	419288
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	419294
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	419300
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	419308
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	419316
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	419407
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	419427
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	419470
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	419478
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	419566
+200 Successfully deleted 
+Delete	priya-test-Validate
+	419849
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420134
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420142
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420189
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420191
+200 Successfully deleted 
+Delete	actcamp-test-Validate
+	420292
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	420330
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420533
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	420543
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420560
+200 Successfully deleted 
+Delete	priya-test-Validate
+	420610
+200 Successfully deleted 
+Delete	priya-test-Validate
+	420616
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	420675
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	420780
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	420835
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	420844
+200 Successfully deleted 
+Delete	actcamp-test-Validate
+	420950
+200 Successfully deleted 
+Skipping  actcamp-test-Validate 
+	 421151
+Skipping  aparna11-test-Validate 
+	 421157
+Delete	christopher-test-Validate
+	421158
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421474
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421480
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421491
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	421519
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	421531
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	421538
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	421539
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	421577
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	421578
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421599
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421624
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421625
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	421709
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	421746
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	421886
+200 Successfully deleted 
+Delete	priya-test-Validate
+	421953
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	421973
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	422031
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	422112
+200 Successfully deleted 
+Delete	priya-test-Validate
+	422666
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	422714
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	422756
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	423203
+200 Successfully deleted 
+Skipping  priya-test-Validate 
+	 425186
+Delete	actkey-test-Validate
+	425960
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	425967
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	426420
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	426540
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	426823
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	427170
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	427365
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Validate 
+	 427373
+Delete	actkey-test-Validate
+	427379
+200 Successfully deleted 
+Skipping  qb-us-test-Validate 
+	 427580
+Delete	actkey-test-Validate
+	427637
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	427702
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	427753
+200 Successfully deleted 
+Skipping  christopher-test-Validate 
+	 428040
+Skipping  actkey-test-Validate 
+	 428059
+HubSpotCustomFields
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431459, "priya-test-Sync": 429769, "actkey-test-Sync": 431170, "actcamp-test-Sync": 421153, "qb-can-test-Sync": 417949, "lakshmipriya-test-Sync": 437192, "qb-us-test-Sync": 433171, "christopher-test-Sync": 433380, "cbsite-test-Sync": 434757, "navee-test-Sync": 437762, "aparna11-test-Sync": 437654}
+Delete	mmmm-test-Sync
+	414979
+200 Successfully deleted 
+Delete	qb-can-test-Sync
+	416242
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416445
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	416451
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416466
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416472
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416478
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	416629
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417118
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	417126
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417149
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	417163
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	417943
+200 Successfully deleted 
+Skipping  qb-can-test-Sync 
+	 417949
+Delete	mmmm-test-Sync
+	418717
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418889
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418895
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	418907
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419009
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419093
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419150
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419221
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419227
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419233
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419290
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419296
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	419413
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419433
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419480
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419568
+200 Successfully deleted 
+Delete	priya-test-Sync
+	419851
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420136
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420144
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420193
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420294
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	420332
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420535
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420545
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420562
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420612
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420618
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420677
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420782
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420837
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	420846
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420970
+200 Successfully deleted 
+Skipping  actcamp-test-Sync 
+	 421153
+Delete	christopher-test-Sync
+	421160
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421476
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421482
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421493
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	421500
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421521
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421533
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421541
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421583
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421585
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421592
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421595
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421601
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421711
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421749
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421888
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421976
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422017
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422033
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422114
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422668
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	422716
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423206
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	424060
+200 Successfully deleted 
+Delete	priya-test-Sync
+	425194
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	425962
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	425969
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426422
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426547
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426826
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427172
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427369
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427375
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	427381
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	427582
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427709
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427777
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	428061
+200 Successfully deleted 
+Delete	priya-test-Sync
+	428461
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	428535
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429161
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429213
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429298
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429377
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	429460
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429487
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429555
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429685
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429691
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429697
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429720
+200 Successfully deleted 
+Skipping  priya-test-Sync 
+	 429769
+Delete	lakshmipriya-test-Sync
+	429888
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429919
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429926
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429933
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429940
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429949
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429956
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	430827
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	431151
+200 Successfully deleted 
+Skipping  actkey-test-Sync 
+	 431170
+Delete	christopher-test-Sync
+	431319
+200 Successfully deleted 
+Skipping  mmmm-test-Sync 
+	 431459
+Delete	lakshmipriya-test-Sync
+	432186
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432899
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432914
+200 Successfully deleted 
+Skipping  qb-us-test-Sync 
+	 433171
+Delete	christopher-test-Sync
+	433376
+200 Successfully deleted 
+Skipping  christopher-test-Sync 
+	 433380
+Delete	lakshmipriya-test-Sync
+	433385
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	433396
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433472
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433481
+200 Successfully deleted 
+Skipping  cbsite-test-Sync 
+	 434757
+Delete	lakshmipriya-test-Sync
+	435752
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435766
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435981
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436212
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436634
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436640
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436872
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436880
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436885
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436895
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437035
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437155
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437166
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437175
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437182
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Sync 
+	 437192
+Delete	aparna11-test-Sync
+	437355
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437545
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437583
+200 Successfully deleted 
+Delete	navee-test-Sync
+	437629
+200 Successfully deleted 
+Skipping  aparna11-test-Sync 
+	 437654
+Skipping  navee-test-Sync 
+	 437762
+HubSpotFullSyncContacts_revamped
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431460, "priya-test-Sync": 429770, "actkey-test-Sync": 431171, "actcamp-test-Sync": 421154, "qb-can-test-Sync": 417950, "lakshmipriya-test-Sync": 437193, "qb-us-test-Sync": 433172, "christopher-test-Sync": 433381, "shamimtest": 417941, "cbsite-test-Sync": 434758, "test": 430761, "navee-test-Sync": 437763, "aparna11-test-Sync": 437655}
+Delete	qb-can-test-Sync
+	416243
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	416452
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417119
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	417150
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	417164
+200 Successfully deleted 
+Skipping  shamimtest 
+	 417941
+Delete	mmmm-test-Sync
+	417944
+200 Successfully deleted 
+Skipping  qb-can-test-Sync 
+	 417950
+Delete	mmmm-test-Sync
+	418718
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418890
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	418932
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419094
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419151
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419305
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419311
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419319
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419434
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419481
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419569
+200 Successfully deleted 
+Delete	priya-test-Sync
+	419852
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420137
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420145
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420194
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420295
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	420333
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420536
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420563
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420613
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420619
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420678
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420971
+200 Successfully deleted 
+Skipping  actcamp-test-Sync 
+	 421154
+Delete	christopher-test-Sync
+	421161
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421477
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421483
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421494
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421522
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421534
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421542
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421584
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421586
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421593
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421596
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421602
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421712
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421750
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421889
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421977
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422018
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422034
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422115
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422669
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	422717
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423207
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	424061
+200 Successfully deleted 
+Delete	priya-test-Sync
+	425195
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	425963
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426827
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427173
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427370
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427376
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	427382
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	427583
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427710
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427778
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	428062
+200 Successfully deleted 
+Delete	priya-test-Sync
+	428462
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	428536
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429214
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429299
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429378
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	429461
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429488
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429556
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429686
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429692
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429698
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429721
+200 Successfully deleted 
+Skipping  priya-test-Sync 
+	 429770
+Delete	lakshmipriya-test-Sync
+	429889
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429920
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429927
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429934
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429941
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429950
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429957
+200 Successfully deleted 
+Skipping  test 
+	 430761
+Delete	lakshmipriya-test-Sync
+	430828
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	431152
+200 Successfully deleted 
+Skipping  actkey-test-Sync 
+	 431171
+Delete	christopher-test-Sync
+	431320
+200 Successfully deleted 
+Skipping  mmmm-test-Sync 
+	 431460
+Delete	lakshmipriya-test-Sync
+	432187
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432900
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432915
+200 Successfully deleted 
+Skipping  qb-us-test-Sync 
+	 433172
+Delete	christopher-test-Sync
+	433377
+200 Successfully deleted 
+Skipping  christopher-test-Sync 
+	 433381
+Delete	lakshmipriya-test-Sync
+	433386
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	433397
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433473
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433482
+200 Successfully deleted 
+Skipping  cbsite-test-Sync 
+	 434758
+Delete	lakshmipriya-test-Sync
+	435753
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435767
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435982
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436213
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436635
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436641
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436873
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436881
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436886
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436896
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437036
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437156
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437167
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437176
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437183
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Sync 
+	 437193
+Delete	aparna11-test-Sync
+	437356
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437546
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437584
+200 Successfully deleted 
+Delete	navee-test-Sync
+	437630
+200 Successfully deleted 
+Skipping  aparna11-test-Sync 
+	 437655
+Skipping  navee-test-Sync 
+	 437763
+HubSpotFullSync
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431458, "priya-test-Sync": 429768, "actkey-test-Sync": 431169, "christopher-test-Sync": 433375, "qb-can-test-Sync": 417948, "lakshmipriya-test-Sync": 437191, "qb-us-test-Sync": 433170, "actcamp-test-Sync": 421152, "cbsite-test-Sync": 434756, "navee-test-Sync": 437761, "aparna11-test-Sync": 437653}
+Delete	mmmm-test-Sync
+	414978
+200 Successfully deleted 
+Delete	qb-can-test-Sync
+	416241
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	416450
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	417162
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	417942
+200 Successfully deleted 
+Skipping  qb-can-test-Sync 
+	 417948
+Delete	mmmm-test-Sync
+	418716
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418886
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418887
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	418888
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	418930
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419092
+200 Successfully deleted 
+Delete	mmmm-test-Sync
+	419149
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419432
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	419479
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	419567
+200 Successfully deleted 
+Delete	priya-test-Sync
+	419850
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420135
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420143
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420188
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420192
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420293
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	420331
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420534
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420561
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420611
+200 Successfully deleted 
+Delete	priya-test-Sync
+	420617
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	420676
+200 Successfully deleted 
+Delete	actcamp-test-Sync
+	420969
+200 Successfully deleted 
+Skipping  actcamp-test-Sync 
+	 421152
+Delete	christopher-test-Sync
+	421159
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421475
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421481
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421492
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421520
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421532
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421540
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421581
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	421582
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421591
+200 Successfully deleted 
+Delete	priya-test-Sync
+	421600
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421710
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	421747
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421887
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	421975
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422016
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422032
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	422113
+200 Successfully deleted 
+Delete	priya-test-Sync
+	422667
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	422715
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423204
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	423205
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	424059
+200 Successfully deleted 
+Delete	priya-test-Sync
+	425193
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	425961
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	425968
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426421
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426546
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	426824
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427171
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427368
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	427374
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	427380
+200 Successfully deleted 
+Delete	qb-us-test-Sync
+	427581
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427708
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	427776
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	428060
+200 Successfully deleted 
+Delete	priya-test-Sync
+	428460
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	428534
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429212
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	429297
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429358
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429376
+200 Successfully deleted 
+Delete	christopher-test-Sync
+	429459
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429486
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429554
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429684
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429690
+200 Successfully deleted 
+Delete	priya-test-Sync
+	429696
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429719
+200 Successfully deleted 
+Skipping  priya-test-Sync 
+	 429768
+Delete	qb-us-test-Sync
+	429786
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429887
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429918
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429925
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429932
+200 Successfully deleted 
+Delete	actkey-test-Sync
+	429939
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429948
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	429955
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	430826
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	431150
+200 Successfully deleted 
+Skipping  actkey-test-Sync 
+	 431169
+Delete	christopher-test-Sync
+	431318
+200 Successfully deleted 
+Skipping  mmmm-test-Sync 
+	 431458
+Delete	lakshmipriya-test-Sync
+	432185
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432898
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	432913
+200 Successfully deleted 
+Skipping  qb-us-test-Sync 
+	 433170
+Delete	christopher-test-Sync
+	433374
+200 Successfully deleted 
+Skipping  christopher-test-Sync 
+	 433375
+Delete	lakshmipriya-test-Sync
+	433384
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	433395
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433471
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	433480
+200 Successfully deleted 
+Skipping  cbsite-test-Sync 
+	 434756
+Delete	aparna11-test-Sync
+	435734
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	435751
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435765
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	435980
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436210
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436633
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436639
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436871
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	436879
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436884
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	436894
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437034
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437154
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437165
+200 Successfully deleted 
+Delete	lakshmipriya-test-Sync
+	437174
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437181
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Sync 
+	 437191
+Delete	aparna11-test-Sync
+	437354
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437544
+200 Successfully deleted 
+Delete	aparna11-test-Sync
+	437582
+200 Successfully deleted 
+Delete	navee-test-Sync
+	437628
+200 Successfully deleted 
+Skipping  aparna11-test-Sync 
+	 437653
+Skipping  navee-test-Sync 
+	 437761
+HubSpotFullSyncMetrics
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431462, "priya-test-Sync": 429772, "actkey-test-Sync": 431173, "christopher-test-Sync": 433383, "qb-can-test-Sync": 417952, "lakshmipriya-test-Sync": 437195, "qb-us-test-Sync": 433174, "actcamp-test-Sync": 421156, "shamimtest": 418149, "cbsite-test-Sync": 434760, "navee-test-Sync": 437765, "aparna11-test-Sync": 437657}
+Skipping  qb-can-test-Sync 
+	 417952
+Skipping  shamimtest 
+	 418149
+Skipping  actcamp-test-Sync 
+	 421156
+Skipping  priya-test-Sync 
+	 429772
+Skipping  actkey-test-Sync 
+	 431173
+Skipping  mmmm-test-Sync 
+	 431462
+Skipping  qb-us-test-Sync 
+	 433174
+Skipping  christopher-test-Sync 
+	 433383
+Skipping  cbsite-test-Sync 
+	 434760
+Skipping  lakshmipriya-test-Sync 
+	 437195
+Skipping  aparna11-test-Sync 
+	 437657
+Skipping  navee-test-Sync 
+	 437765
+HubSpotFullSyncDeals-Revamped
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431461, "priya-test-Sync": 429771, "actkey-test-Sync": 431172, "christopher-test-Sync": 433382, "qb-can-test-Sync": 417951, "lakshmipriya-test-Sync": 437194, "qb-us-test-Sync": 433173, "actcamp-test-Sync": 421155, "cbsite-test-Sync": 434759, "pries-test": 416482, "navee-test-Sync": 437764, "aparna11-test-Sync": 437656}
+Skipping  pries-test 
+	 416482
+Skipping  qb-can-test-Sync 
+	 417951
+Skipping  actcamp-test-Sync 
+	 421155
+Skipping  priya-test-Sync 
+	 429771
+Skipping  actkey-test-Sync 
+	 431172
+Skipping  mmmm-test-Sync 
+	 431461
+Skipping  qb-us-test-Sync 
+	 433173
+Skipping  christopher-test-Sync 
+	 433382
+Skipping  cbsite-test-Sync 
+	 434759
+Skipping  lakshmipriya-test-Sync 
+	 437194
+Skipping  aparna11-test-Sync 
+	 437656
+Skipping  navee-test-Sync 
+	 437764
+HubspotValidate
+Retrive instaces of formula 
+{"navee-test-Validate": 437760, "actcamp-test-Validate": 421151, "lakshmipriya-test-Validate": 437188, "qb-can-test-Validate": 417947, "mmmm-test-Validate": 431457, "cbsite-test-Validate": 434755, "priya-test-Validate": 429715, "qb-us-test-Validate": 433169, "aparna11-test-Validate": 437766, "christopher-test-Validate": 433373, "actkey-test-Validate": 431160}
+Skipping  qb-can-test-Validate 
+	 417947
+Delete	mmmm-test-Validate
+	419148
+200 Successfully deleted 
+Skipping  actcamp-test-Validate 
+	 421151
+Delete	aparna11-test-Validate
+	421157
+200 Successfully deleted 
+Delete	priya-test-Validate
+	425186
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	427373
+200 Successfully deleted 
+Delete	qb-us-test-Validate
+	427580
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	428040
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	428059
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	428128
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	428443
+200 Successfully deleted 
+Delete	priya-test-Validate
+	428459
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	428475
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	428533
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	429159
+200 Successfully deleted 
+Delete	mmmm-test-Validate
+	429204
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	429211
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	429285
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429373
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	429439
+200 Successfully deleted 
+Delete	christopher-test-Validate
+	429458
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429483
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429534
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429553
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429609
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429683
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429689
+200 Successfully deleted 
+Delete	priya-test-Validate
+	429695
+200 Successfully deleted 
+Skipping  priya-test-Validate 
+	 429715
+Delete	actkey-test-Validate
+	429717
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429793
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429869
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429875
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429878
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429914
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429924
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	429930
+200 Successfully deleted 
+Delete	actkey-test-Validate
+	429938
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429947
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	429953
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	430821
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	430824
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	430825
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	431149
+200 Successfully deleted 
+Skipping  actkey-test-Validate 
+	 431160
+Delete	christopher-test-Validate
+	431288
+200 Successfully deleted 
+Skipping  mmmm-test-Validate 
+	 431457
+Delete	christopher-test-Validate
+	431667
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	432184
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	432897
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	432912
+200 Successfully deleted 
+Skipping  qb-us-test-Validate 
+	 433169
+Delete	lakshmipriya-test-Validate
+	433327
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	433336
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	433337
+200 Successfully deleted 
+Skipping  christopher-test-Validate 
+	 433373
+Delete	aparna11-test-Validate
+	433393
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	433470
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	433479
+200 Successfully deleted 
+Skipping  cbsite-test-Validate 
+	 434755
+Delete	lakshmipriya-test-Validate
+	435276
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	435277
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	435733
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	435745
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	435746
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	435750
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	435979
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	436209
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	436357
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	436632
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	436638
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	436822
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	436870
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	436878
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	436893
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437033
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	437153
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	437164
+200 Successfully deleted 
+Delete	lakshmipriya-test-Validate
+	437171
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437180
+200 Successfully deleted 
+Skipping  lakshmipriya-test-Validate 
+	 437188
+Delete	aparna11-test-Validate
+	437353
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437542
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437580
+200 Successfully deleted 
+Delete	navee-test-Validate
+	437627
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437643
+200 Successfully deleted 
+Delete	aparna11-test-Validate
+	437652
+200 Successfully deleted 
+Skipping  navee-test-Validate 
+	 437760
+Skipping  aparna11-test-Validate 
+	 437766
+HubSpotCustomFields
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431459, "priya-test-Sync": 429769, "actkey-test-Sync": 431170, "christopher-test-Sync": 433380, "qb-can-test-Sync": 417949, "lakshmipriya-test-Sync": 437192, "qb-us-test-Sync": 433171, "actcamp-test-Sync": 421153, "cbsite-test-Sync": 434757, "navee-test-Sync": 437762, "aparna11-test-Sync": 437654}
+Skipping  qb-can-test-Sync 
+	 417949
+Skipping  actcamp-test-Sync 
+	 421153
+Skipping  priya-test-Sync 
+	 429769
+Skipping  actkey-test-Sync 
+	 431170
+Skipping  mmmm-test-Sync 
+	 431459
+Skipping  qb-us-test-Sync 
+	 433171
+Skipping  christopher-test-Sync 
+	 433380
+Skipping  cbsite-test-Sync 
+	 434757
+Skipping  lakshmipriya-test-Sync 
+	 437192
+Skipping  aparna11-test-Sync 
+	 437654
+Skipping  navee-test-Sync 
+	 437762
+HubSpotFullSyncContacts_revamped
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431460, "priya-test-Sync": 429770, "actkey-test-Sync": 431171, "christopher-test-Sync": 433381, "qb-can-test-Sync": 417950, "lakshmipriya-test-Sync": 437193, "qb-us-test-Sync": 433172, "actcamp-test-Sync": 421154, "shamimtest": 417941, "cbsite-test-Sync": 434758, "test": 430761, "navee-test-Sync": 437763, "aparna11-test-Sync": 437655}
+Skipping  shamimtest 
+	 417941
+Skipping  qb-can-test-Sync 
+	 417950
+Skipping  actcamp-test-Sync 
+	 421154
+Skipping  priya-test-Sync 
+	 429770
+Skipping  test 
+	 430761
+Skipping  actkey-test-Sync 
+	 431171
+Skipping  mmmm-test-Sync 
+	 431460
+Skipping  qb-us-test-Sync 
+	 433172
+Skipping  christopher-test-Sync 
+	 433381
+Skipping  cbsite-test-Sync 
+	 434758
+Skipping  lakshmipriya-test-Sync 
+	 437193
+Skipping  aparna11-test-Sync 
+	 437655
+Skipping  navee-test-Sync 
+	 437763
+HubSpotFullSync
+Retrive instaces of formula 
+{"mmmm-test-Sync": 431458, "priya-test-Sync": 429768, "actkey-test-Sync": 431169, "christopher-test-Sync": 433375, "qb-can-test-Sync": 417948, "lakshmipriya-test-Sync": 437191, "qb-us-test-Sync": 433170, "actcamp-test-Sync": 421152, "cbsite-test-Sync": 434756, "navee-test-Sync": 437761, "aparna11-test-Sync": 437653}
+Skipping  qb-can-test-Sync 
+	 417948
+Skipping  actcamp-test-Sync 
+	 421152
+Skipping  priya-test-Sync 
+	 429768
+Skipping  actkey-test-Sync 
+	 431169
+Skipping  mmmm-test-Sync 
+	 431458
+Skipping  qb-us-test-Sync 
+	 433170
+Skipping  christopher-test-Sync 
+	 433375
+Skipping  cbsite-test-Sync 
+	 434756
+Skipping  lakshmipriya-test-Sync 
+	 437191
+Skipping  aparna11-test-Sync 
+	 437653
+Skipping  navee-test-Sync 
+	 437761
