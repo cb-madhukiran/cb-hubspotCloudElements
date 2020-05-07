@@ -1,0 +1,766 @@
+{
+    "id": 31448,
+    "name": "HubSpotCustomFields",
+    "userId": 36293,
+    "accountId": 29640,
+    "createdDate": "2019-11-15T11:20:26Z",
+    "steps": [
+      {
+        "id": 247959,
+        "onSuccess": [
+          "HasChargebeeConfigParams"
+        ],
+        "onFailure": [],
+        "name": "ChargebeeConfigParams",
+        "type": "formula",
+        "properties": {
+          "formulaId": "31330",
+          "args": "${steps.InputParams.cbconfig}"
+        }
+      },
+      {
+        "id": 247960,
+        "onSuccess": [
+          "ChargebeeConfigParams"
+        ],
+        "onFailure": [],
+        "name": "ConfigData",
+        "type": "script",
+        "properties": {
+          "body": "done({\n  configJson:{}\n});"
+        }
+      },
+      {
+        "id": 247961,
+        "onSuccess": [
+          "HasCreateCustomProperties"
+        ],
+        "onFailure": [],
+        "name": "CreateCustomProperties",
+        "type": "formula",
+        "properties": {
+          "formulaId": "31333",
+          "args": "${steps.CreateIn}"
+        }
+      },
+      {
+        "id": 247962,
+        "onSuccess": [
+          "CreateCustomProperties"
+        ],
+        "onFailure": [],
+        "name": "CreateIn",
+        "type": "script",
+        "properties": {
+          "body": "done({\n        url: steps.LoopOverCustomProperties.entry.url,\n        headers:steps.HubUrl.headers,\n        apiKey: steps.InputParams.input.apiKey,\n        body:steps.LoopOverCustomProperties.entry.body,\n        siteName: steps.InputParams.input.siteName,\n        siteDomain: steps.InputParams.input.siteDomain,\n        type: steps.InputParams.input.type,\n});"
+        }
+      },
+      {
+        "id": 247963,
+        "onSuccess": [
+          "DoCreateCustomProperties"
+        ],
+        "onFailure": [],
+        "name": "CustomGroups",
+        "type": "script",
+        "properties": {
+          "body": "let creates = [];\nlet deletes = [];\n\nlet prefix = \"cb_\";\n\nif (steps.ChargebeeConfigParams.data.config_json.noneedprefix !== undefined && steps.ChargebeeConfigParams.data.config_json.noneedprefix === true) {\n  prefix = \"\";\n}\n\n\n\nif (steps.LoopOverHubGroups.entry.custom) {\n\n  let syncRulesFields = steps.ConfigData.configJson.config_json.cloudElements.syncRulesFields;\n  if (syncRulesFields === undefined) {\n    syncRulesFields = {\n      \"company\": {\n\n      },\n      \"contact\": {\n\n      },\n      \"deal\": {\n      },\n      \"sync\": \"false\"\n    };\n\n  } else {\n    if (syncRulesFields.company === undefined || syncRulesFields.company === \"\") {\n      syncRulesFields.company = {};\n    }\n    if (syncRulesFields.contact === undefined || syncRulesFields.contact === \"\") {\n      syncRulesFields.contact = {};\n    }\n    if (syncRulesFields.deal === undefined || syncRulesFields.deal === \"\") {\n      syncRulesFields.deal = {};\n    }\n  }\n  syncRulesFields = JSON.parse(JSON.stringify(syncRulesFields));\n  let customefields = steps.HubUrl.config.customefields;\n  let customCompanyFields = steps.HubUrl.config.customCompanyFields;\n  let companyKeys = Object.keys(syncRulesFields.company);\n\n  for (var i = 0; i < companyKeys.length; i++) {\n    syncRulesFields.contact[companyKeys[i]] = syncRulesFields.company[companyKeys[i]];\n  }\n\n\n  if (steps.GetCustomHubSpotGroups.cb_code === 200) {\n    let body = steps.GetCustomHubSpotGroups.data.properties;\n    if (body.length > 0) {\n      for (var i = 0; i < body.length; i++) {\n        let pName = body[i].name;\n        if (pName.startsWith(\"cb_\")) {\n          pName = pName.substring(3);\n        }\n        if (steps.LoopOverHubGroups.entry.type === \"company\") {\n          if (syncRulesFields.company[pName] === undefined) {\n            syncRulesFields.company[pName] = \"delete\";\n          } else {\n            syncRulesFields.company[pName] = \"off\";\n          }\n        }\n        if (steps.LoopOverHubGroups.entry.type === \"contacts\") {\n          if (syncRulesFields.contact[pName] === undefined) {\n            syncRulesFields.contact[pName] = \"delete\";\n          } else {\n            syncRulesFields.contact[pName] = \"off\";\n          }\n        }\n        if (steps.LoopOverHubGroups.entry.type === \"deal\") {\n          if (syncRulesFields.deal[pName] === undefined) {\n            syncRulesFields.deal[pName] = \"delete\";\n          } else {\n            syncRulesFields.deal[pName] = \"off\";\n          }\n        }\n      }\n    }\n\n  } else {\n    if (steps.LoopOverHubGroups.entry.type === \"company\") {\n      creates.push({\n        url: \"https://api.hubapi.com/properties/v1/companies/groups\",\n        body: {\n          \"name\": \"chargebeecustomproperties\",\n          \"displayName\": \"Chargebee Custom Properties\"\n        }\n      });\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"contacts\") {\n      creates.push({\n        url: \"https://api.hubapi.com/properties/v1/contacts/groups\",\n        body: {\n          \"name\": \"chargebeecustomproperties\",\n          \"displayName\": \"Chargebee Custom Properties\"\n        }\n      });\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"deal\") {\n      creates.push({\n        url: \"https://api.hubapi.com/properties/v1/deals/groups\",\n        body: {\n          \"name\": \"chargebeecustomproperties\",\n          \"displayName\": \"Chargebee Custom Properties\"\n        }\n      });\n    }\n  }\n\n  if (steps.LoopOverHubGroups.entry.type === \"company\") {\n    for (var i = 0; i < customCompanyFields.length; i++) {\n      let fld = customCompanyFields[i];\n\n      for (var j = 0; j < fld.fields.length; j++) {\n        var es = fld.fields[j];\n        var desc = fld.label + \" \" + es[0].replace(/_/g, \" \");\n        var id = fld.key + \"_\" + es[0];\n        if (syncRulesFields.company[id] === \"on\") {\n          creates.push({\n            url: \"https://api.hubapi.com/properties/v1/companies/properties\",\n            body: {\n              \"name\": prefix + id,\n              \"label\": desc,\n              \"description\": desc,\n              \"groupName\": \"chargebeecustomproperties\",\n              \"type\": es[1],\n              \"fieldType\": es[2],\n              \"formField\": true\n            }\n          });\n\n        } else if (syncRulesFields.company[id] === \"delete\") {\n\n          deletes.push(\"https://api.hubapi.com/properties/v1/companies/properties/named/\" + prefix + id);\n        }\n\n      }\n    }\n\n  } else {\n    for (var i = 0; i < customefields.length; i++) {\n      let fld = customefields[i];\n\n      for (var j = 0; j < fld.fields.length; j++) {\n        var es = fld.fields[j];\n        var desc = fld.label + \" \" + es[0].replace(/_/g, \" \");\n        var id = fld.key + \"_\" + es[0];\n        if (steps.LoopOverHubGroups.entry.type === \"contacts\") {\n          if (syncRulesFields.contact[id] === \"on\") {\n            creates.push({\n              url: \"https://api.hubapi.com/properties/v1/contacts/properties\",\n              body: {\n                \"name\": prefix + id,\n                \"label\": desc,\n                \"description\": desc,\n                \"groupName\": \"chargebeecustomproperties\",\n                \"type\": es[1],\n                \"fieldType\": es[2],\n                \"formField\": true\n              }\n            });\n\n          } else if (syncRulesFields.contact[id] === \"delete\") {\n\n            deletes.push(\"https://api.hubapi.com/properties/v1/contacts/properties/named/\" + prefix + id);\n          }\n        } else {\n          if (syncRulesFields.deal[id] === \"on\") {\n            creates.push({\n              url: \"https://api.hubapi.com/properties/v1/deals/properties\",\n              body: {\n                \"name\": prefix + id,\n                \"label\": desc,\n                \"description\": desc,\n                \"groupName\": \"chargebeecustomproperties\",\n                \"type\": es[1],\n                \"fieldType\": es[2],\n                \"formField\": true\n              }\n            });\n\n          } else if (syncRulesFields.deal[id] === \"delete\") {\n\n            deletes.push(\"https://api.hubapi.com/properties/v1/deals/properties/named/\" + prefix + id);\n          }\n        }\n\n\n      }\n    }\n  }\n} else {\n  let companyProperties = [\n    {\n      \"name\": prefix + \"totalsubscriptionmrr\",\n      \"label\": \"Total subscription MRR\",\n      \"description\": \"Total subscription MRR\",\n      \"groupName\": \"chargebeesubscriptionmetrics\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"totalnoofsubscription\",\n      \"label\": \"Total # of subscriptions\",\n      \"description\": \"Total # of subscriptions\",\n      \"groupName\": \"chargebeesubscriptionmetrics\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"totaldues\",\n      \"label\": \"Total dues\",\n      \"description\": \"Total dues\",\n      \"groupName\": \"chargebeesubscriptionmetrics\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"totalinvoiceamountpaid\",\n      \"label\": \"Total invoice amount paid\",\n      \"description\": \"Total invoice amount paid\",\n      \"groupName\": \"chargebeesubscriptionmetrics\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"totaldueinvoicescount\",\n      \"label\": \"Total due invoices count\",\n      \"description\": \"Total due invoices count\",\n      \"groupName\": \"chargebeesubscriptionmetrics\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }];\n\n  let contactProperties = [\n    {\n      \"name\": \"chargebeecustomerid\",\n      \"label\": \"Chargebee customer ID\",\n      \"description\": \"Chargebee customer ID\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"billingaddress\",\n      \"label\": \"BillingAddress\",\n      \"description\": \"Billing Address\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"billingcity\",\n      \"label\": \"BillingCity\",\n      \"description\": \"Billing City\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"billingstate\",\n      \"label\": \"BillingState\",\n      \"description\": \"Billing State\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"billingcountry\",\n      \"label\": \"BillingCountry\",\n      \"description\": \"Billing Country\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"billingzip\",\n      \"label\": \"BillingZip\",\n      \"description\": \"Billing Zip\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"autocollection\",\n      \"label\": \"Autocollection\",\n      \"description\": \"Autocollection\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"preferredcurrencycode\",\n      \"label\": \"PreferredCurrencyCode\",\n      \"description\": \"Preferred Currency Code\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"paymentmethodstatus\",\n      \"label\": \"PaymentMethod Status\",\n      \"description\": \"PaymentMethod Status\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"paymentmethodtype\",\n      \"label\": \"PaymentMethod Type\",\n      \"description\": \"PaymentMethod Type\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nettermdays\",\n      \"label\": \"Net Term Days\",\n      \"description\": \"Net Term Days\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"taxexemptstatus\",\n      \"label\": \"Tax exempt status\",\n      \"description\": \"Tax exempt status\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"subscriptionid\",\n      \"label\": \"Subscription ID\",\n      \"description\": \"Subscription ID\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, \n    {\n      \"name\": prefix + \"currencycode\",\n      \"label\": \"Currency Code\",\n      \"description\": \"Chargebee Currency Code\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },{\n      \"name\": prefix + \"subscriptiostatus\",\n      \"label\": \"Subscription status\",\n      \"description\": \"Subscription status\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"subscriptionmrr\",\n      \"label\": \"Subscription MRR\",\n      \"description\": \"Subscription MRR\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"customermrr\",\n      \"label\": \"Total Customer MRR\",\n      \"description\": \"Total Customer MRR\",\n      \"groupName\": \"chargebeecustomerinfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"product\",\n      \"label\": \"Product\",\n      \"description\": \"Product\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"planquantity\",\n      \"label\": \"Plan quantity\",\n      \"description\": \"Plan quantity\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"setupfee\",\n      \"label\": \"Setup Fee\",\n      \"description\": \"Setup Fee\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"dueinvoicescount\",\n      \"label\": \"Due invoices count\",\n      \"description\": \"Due invoices count\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"invoiceamountpaid\",\n      \"label\": \"Invoice amount paid\",\n      \"description\": \"Invoices amount paid\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"remainingbillingcycles\",\n      \"label\": \"Remaining billing cycles\",\n      \"description\": \"Remaining billing cycles\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"ponumber\",\n      \"label\": \"PO Number\",\n      \"description\": \"PO Number\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextbillingat\",\n      \"label\": \"Next Billing At\",\n      \"description\": \"Next Billing At\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextbillingamount\",\n      \"label\": \"Next Billing Amount\",\n      \"description\": \"Next Billing Amount\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"totaldues\",\n      \"label\": \"TotalDues\",\n      \"description\": \"Total Dues\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"duesince\",\n      \"label\": \"Due Since\",\n      \"description\": \"Due Since\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"lastorderdate\",\n      \"label\": \"Last Order Date\",\n      \"description\": \"LastOrderDate\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"lastorder\",\n      \"label\": \"Last Order\",\n      \"description\": \"Last Order\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"lastorderstatus\",\n      \"label\": \"Last Order Status\",\n      \"description\": \"Last Order Status\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"lastorderbasecomponentsku\",\n      \"label\": \"Last order base component SKU\",\n      \"description\": \"Last order base component SKU\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextorderdate\",\n      \"label\": \"Next Order Date\",\n      \"description\": \"Next Order Date\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextorder\",\n      \"label\": \"Next Order\",\n      \"description\": \"Next Order\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextorderbasecomponentsku\",\n      \"label\": \"Next order base component SKU\",\n      \"description\": \"Next order base component SKU\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextorderstatus\",\n      \"label\": \"Next Order Status\",\n      \"description\": \"Next Order Status\",\n      \"groupName\": \"chargebeeorderinfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }];\n  let dealProperties = [\n    {\n      \"name\": \"hubspotcontact\",\n      \"label\": \"Hubspot contact\",\n      \"description\": \"Hubspot contact\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"currencycode\",\n      \"label\": \"Currency Code\",\n      \"description\": \"Chargebee Currency Code\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"subscriptionid\",\n      \"label\": \"Subscription ID\",\n      \"description\": \"Subscription ID\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"subscriptionstatus\",\n      \"label\": \"Subscription status\",\n      \"description\": \"Subscription status\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"subscriptionmrr\",\n      \"label\": \"Subscription MRR\",\n      \"description\": \"Subscription MRR\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"product\",\n      \"label\": \"Product\",\n      \"description\": \"Product\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"planquantity\",\n      \"label\": \"Plan quantity\",\n      \"description\": \"Plan quantity\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"setupfee\",\n      \"label\": \"Setup fee\",\n      \"description\": \"Setup fee\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"dueinvoicescount\",\n      \"label\": \"Due invoices count\",\n      \"description\": \"Due invoices count\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    },\n    {\n      \"name\": prefix + \"remainingbillingcycles\",\n      \"label\": \"Remaining billing cycles\",\n      \"description\": \"Remaining billing cycles\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"ponumber\",\n      \"label\": \"PO number\",\n      \"description\": \"PO number\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"string\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"totaldues\",\n      \"label\": \"Total dues\",\n      \"description\": \"Total dues\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }\n    , {\n      \"name\": prefix + \"nextbillingat\",\n      \"label\": \"Next billing at\",\n      \"description\": \"Next billing at\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"nextbillingamount\",\n      \"label\": \"Next Billing Amount\",\n      \"description\": \"Next Billing Amount\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"number\",\n      \"fieldType\": \"text\",\n      \"formField\": true\n    }, {\n      \"name\": prefix + \"duesince\",\n      \"label\": \"Due Since\",\n      \"description\": \"Due Since\",\n      \"groupName\": \"chargebeesubscriptioninfo\",\n      \"type\": \"datetime\",\n      \"fieldType\": \"date\",\n      \"formField\": true\n    }];\n\n  if (steps.GetCustomHubSpotGroups.cb_code === 404) {\n    if (steps.LoopOverHubGroups.entry.type === \"company\") {\n      creates.push({\n        url: \"https://api.hubapi.com/properties/v1/companies/groups\",\n        body: {\n          \"name\": \"chargebeesubscriptionmetrics\",\n          \"displayName\": \"Chargebee subscription metrics\"\n        }\n      });\n\n      for (var k = 0; k < companyProperties.length; k++) {\n        creates.push({\n          url: \"https://api.hubapi.com/properties/v1/companies/properties\",\n          body: companyProperties[k]\n        });\n      }\n\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"contacts\") {\n      if (steps.LoopOverHubGroups.entry.group === \"chargebeecustomerinfo\") {\n        creates.push({\n          url: \"https://api.hubapi.com/properties/v1/contacts/groups\",\n          body: {\n            \"name\": \"chargebeecustomerinfo\",\n            \"displayName\": \"Chargebee customer info\"\n          }\n        });\n      }\n      if (steps.LoopOverHubGroups.entry.group === \"chargebeesubscriptioninfo\") {\n        creates.push({\n          url: \"https://api.hubapi.com/properties/v1/contacts/groups\",\n          body: {\n            \"name\": \"chargebeesubscriptioninfo\",\n            \"displayName\": \"Chargebee subscription info\"\n          }\n        });\n      }\n      if (steps.LoopOverHubGroups.entry.group === \"chargebeeorderinfo\") {\n        creates.push({\n          url: \"https://api.hubapi.com/properties/v1/contacts/groups\",\n          body: {\n            \"name\": \"chargebeeorderinfo\",\n            \"displayName\": \"Chargebee order info\"\n          }\n        });\n      }\n\n      for (var k = 0; k < contactProperties.length; k++) {\n        if (steps.LoopOverHubGroups.entry.group === contactProperties[k].groupName) {\n          creates.push({\n            url: \"https://api.hubapi.com/properties/v1/contacts/properties\",\n            body: contactProperties[k]\n          });\n        }\n      }\n\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"deal\") {\n      creates.push({\n        url: \"https://api.hubapi.com/properties/v1/deals/groups\",\n        body: {\n          \"name\": \"chargebeesubscriptioninfo\",\n          \"displayName\": \"Chargebee subscription info\"\n        }\n      });\n\n\n\n      for (var k = 0; k < dealProperties.length; k++) {\n        creates.push({\n          url: \"https://api.hubapi.com/properties/v1/deals/properties\",\n          body: dealProperties[k]\n        });\n      }\n\n\n\n    }\n  } else if (steps.GetCustomHubSpotGroups.cb_code === 200) {\n\n    let pMap = {};\n    let existingProps = steps.GetCustomHubSpotGroups.data.properties;\n    for (var ij = 0; ij < existingProps.length; ij++) {\n      pMap[existingProps[ij].name] = existingProps[ij].name;\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"company\") {\n      for (var k = 0; k < companyProperties.length; k++) {\n        if (pMap[companyProperties[k].name] === undefined) {\n          creates.push({\n            url: \"https://api.hubapi.com/properties/v1/companies/properties\",\n            body: companyProperties[k]\n          });\n        }\n\n      }\n\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"contacts\") {\n      for (var k = 0; k < contactProperties.length; k++) {\n        if (steps.LoopOverHubGroups.entry.group === contactProperties[k].groupName) {\n          if (pMap[contactProperties[k].name] === undefined) {\n            creates.push({\n              url: \"https://api.hubapi.com/properties/v1/contacts/properties\",\n              body: contactProperties[k]\n            });\n          }\n\n        }\n      }\n\n    }\n    if (steps.LoopOverHubGroups.entry.type === \"deal\") {\n\n      for (var k = 0; k < dealProperties.length; k++) {\n        if (pMap[dealProperties[k].name] === undefined) {\n          creates.push({\n            url: \"https://api.hubapi.com/properties/v1/deals/properties\",\n            body: dealProperties[k]\n          });\n        }\n      }\n    }\n\n  }\n}\n\nconsole.log(creates)\nconsole.log(deletes)\n\n\ndone({\n  creates: creates,\n  deletes: deletes\n});\n"
+        }
+      },
+      {
+        "id": 247964,
+        "onSuccess": [
+          "LoopOverDeleteProperties"
+        ],
+        "onFailure": [
+          "LoopOverDeleteProperties"
+        ],
+        "name": "DeletcustomProperties",
+        "type": "httpRequest",
+        "properties": {
+          "method": "DELETE",
+          "acceptableStatusCodes": "200-600",
+          "retryAttempts": "3",
+          "retry": "true",
+          "headers": "${steps.HubUrl.headers}",
+          "retryStatusCodes": "502",
+          "retryDelay": "300",
+          "url": "${steps.LoopOverDeleteProperties.entry}"
+        }
+      },
+      {
+        "id": 247965,
+        "onSuccess": [
+          "LoopOverCustomProperties"
+        ],
+        "onFailure": [
+          "DoDeleteCustomProperties"
+        ],
+        "name": "DoCreateCustomProperties",
+        "type": "filter",
+        "properties": {
+          "body": "done(steps.CustomGroups.creates.length>0);"
+        }
+      },
+      {
+        "id": 247966,
+        "onSuccess": [
+          "LoopOverDeleteProperties"
+        ],
+        "onFailure": [
+          "LoopOverHubGroups"
+        ],
+        "name": "DoDeleteCustomProperties",
+        "type": "filter",
+        "properties": {
+          "body": "done(steps.CustomGroups.deletes.length > 0);"
+        }
+      },
+      {
+        "id": 247967,
+        "onSuccess": [],
+        "onFailure": [],
+        "name": "DoneCustom",
+        "type": "script",
+        "properties": {
+          "body": "let data = {status:true};\ndata.cbErrorCode = steps.ConfigData.errorCode;\ndone(data);"
+        }
+      },
+      {
+        "id": 247968,
+        "onSuccess": [
+          "HasGetCBCustomFields"
+        ],
+        "onFailure": [],
+        "name": "GetCBCustomFields",
+        "type": "formula",
+        "properties": {
+          "formulaId": "31330",
+          "args": "${steps.InputParams.cbfields}"
+        }
+      },
+      {
+        "id": 247969,
+        "onSuccess": [
+          "HasGetCustomHubSpotGroups"
+        ],
+        "onFailure": [],
+        "name": "GetCustomHubSpotGroups",
+        "type": "formula",
+        "properties": {
+          "formulaId": "31332",
+          "args": "${steps.HubIn}"
+        }
+      },
+      {
+        "id": 247970,
+        "onSuccess": [
+          "HubUrl"
+        ],
+        "onFailure": [
+          "DoneCustom"
+        ],
+        "name": "HasChargebeeConfigParams",
+        "type": "filter",
+        "properties": {
+          "body": "if(steps.ChargebeeConfigParams.cb_status===\"success\") {\n  steps.ConfigData.configJson = steps.ChargebeeConfigParams.data;\n  done(true);\n}else {\n   steps.ConfigData.errorCode =  steps.ChargebeeConfigParams.cb_error_code;\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 247971,
+        "onSuccess": [
+          "LoopOverCustomProperties"
+        ],
+        "onFailure": [
+          "DoneCustom"
+        ],
+        "name": "HasCreateCustomProperties",
+        "type": "filter",
+        "properties": {
+          "body": "if(steps.CreateCustomProperties.cb_status===\"success\") {\n   done(true);\n}\nelse if(steps.CreateCustomProperties.cb_status===\"failure\" && steps.CreateCustomProperties.response_body.body.message.includes(\"already exists\") ){\n  done(true);\n}\nelse {\n   steps.ConfigData.errorCode =  steps.CreateCustomProperties.cb_error_code;\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 247972,
+        "onSuccess": [
+          "UpdateCustomFieldInfo"
+        ],
+        "onFailure": [
+          "DoneCustom"
+        ],
+        "name": "HasGetCBCustomFields",
+        "type": "filter",
+        "properties": {
+          "body": "if(steps.GetCBCustomFields.cb_status===\"success\") {\n  done(true);\n}else {\n   steps.ConfigData.errorCode =  steps.GetCBCustomFields.cb_error_code;\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 247973,
+        "onSuccess": [
+          "CustomGroups"
+        ],
+        "onFailure": [
+          "DoneCustom"
+        ],
+        "name": "HasGetCustomHubSpotGroups",
+        "type": "filter",
+        "properties": {
+          "body": "if(steps.GetCustomHubSpotGroups.cb_status===\"success\" || steps.GetCustomHubSpotGroups.cb_code===404) {\n   done(true);\n}else {\n   steps.ConfigData.errorCode =  steps.GetCustomHubSpotGroups.cb_error_code;\n  done(false);\n}"
+        }
+      },
+      {
+        "id": 247974,
+        "onSuccess": [
+          "GetCustomHubSpotGroups"
+        ],
+        "onFailure": [],
+        "name": "HubIn",
+        "type": "script",
+        "properties": {
+          "body": "done({\n        url: steps.LoopOverHubGroups.entry.url,\n        headers:steps.HubUrl.headers,\n        apiKey: steps.InputParams.input.apiKey,\n        siteName: steps.InputParams.input.siteName,\n        siteDomain: steps.InputParams.input.siteDomain,\n        type: steps.InputParams.input.type,\n    });"
+        }
+      },
+      {
+        "id": 247975,
+        "onSuccess": [
+          "GetCBCustomFields"
+        ],
+        "onFailure": [],
+        "name": "HubUrl",
+        "type": "script",
+        "properties": {
+          "body": "\nlet config = {\n    groups:\"https://api.hubapi.com/properties/v1/contacts/groups\",\n    companyGroups :\"https://api.hubapi.com/properties/v1/companies/groups\",\n    dealGroups :\"https://api.hubapi.com/properties/v1/deals/groups\",\n    companyList : \"https://api.hubapi.com/companies/v2/companies/paged?properties=name\",\n    createGroup: \"https://api.hubapi.com/properties/v1/deals/groups\",\n    createProperty: \"https://api.hubapi.com/properties/v1/deals/properties\",\n    createCompanyGroup: \"https://api.hubapi.com/properties/v1/companies/groups\",\n    createCompanyProperty: \"https://api.hubapi.com/properties/v1/companies/properties\",\n    createContactGroup: \"https://api.hubapi.com/properties/v1/contacts/groups\",\n    createContactProperty: \"https://api.hubapi.com/properties/v1/contacts/properties\",\n     headers: {\n      \"Authorization\":\"Bearer \"+steps.ConfigData.configJson.config_json.cloudElements.thirdParty.accessToken,\n       Accept: \"application/json\"\n    },\n    config: {\n        groups: [{\n            url: \"https://api.hubapi.com/properties/v1/deals/groups/named/chargebeecustomproperties?includeProperties=true\",\n            type: \"deal\",\n            group:\"chargebeecustomproperties\",\n            custom: true\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/contacts/groups/named/chargebeecustomproperties?includeProperties=true\",\n            type: \"contacts\",\n             group:\"chargebeecustomproperties\",\n            custom: true\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/companies/groups/named/chargebeecustomproperties?includeProperties=true\",\n            type: \"company\",\n            group:\"chargebeecustomproperties\",\n            custom: true\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/deals/groups/named/chargebeesubscriptioninfo?includeProperties=true\",\n            type: \"deal\",\n            group:\"chargebeesubscriptioninfo\",\n            custom: false\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/companies/groups/named/chargebeesubscriptionmetrics?includeProperties=true\",\n            type: \"company\",\n              group:\"chargebeesubscriptionmetrics\",\n            custom: false\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/contacts/groups/named/chargebeecustomerinfo?includeProperties=true\",\n             group:\"chargebeecustomerinfo\",\n            type: \"contacts\",\n            custom: false\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/contacts/groups/named/chargebeesubscriptioninfo?includeProperties=true\",\n            type: \"contacts\",\n             group:\"chargebeesubscriptioninfo\",\n            custom: false\n        },\n        {\n            url: \"https://api.hubapi.com/properties/v1/contacts/groups/named/chargebeeorderinfo?includeProperties=true\",\n            type: \"contacts\",\n            group:\"chargebeeorderinfo\",\n            custom: false\n        } \n        ],\n        custom: {\n            groups: [],\n            creates: [],\n            deletes: []\n        },\n        customefields: [\n            {\n                label: \"Subscription\",\n                key: \"subcst\",\n                fields: [\n                    ['currency_code', 'string', 'text'],\n                     ['plan_quantity', 'number', 'text'],\n                    ['plan_unit_price', 'number', 'text', 'currency'],\n                    ['plan_amount', 'number', 'text', 'currency'],\n                    ['billing_period', 'number', 'text'],\n                    ['billing_period_unit', 'string', 'text'],\n                    ['plan_free_quantity', 'number', 'text'],\n                    ['start_date', 'datetime', 'date'],\n                    ['trial_start', 'datetime', 'date'],\n                    ['trial_end', 'datetime', 'date'],\n                    ['current_term_start', 'datetime', 'date'],\n                    ['current_term_end', 'datetime', 'date'],\n                    ['created_at', 'datetime', 'date'],\n                    ['started_at', 'datetime', 'date'],\n                    ['activated_at', 'datetime', 'date'],\n                    ['gift_id', 'string', 'text'],\n                    ['override_relationship', 'string', 'text'],\n                    ['pause_date', 'datetime', 'date'],\n                    ['resume_date', 'datetime', 'date'],\n                    ['cancelled_at', 'datetime', 'date'],\n                    ['cancel_reason', 'string', 'text'],\n                    ['affiliate_token', 'string', 'text'],\n                    ['created_from_ip', 'string', 'text'],\n                    ['resource_version', 'number', 'text'],\n                    ['updated_at', 'datetime', 'date'],\n                    ['has_scheduled_changes', 'string', 'text'],\n                    ['payment_source_id', 'string', 'text'],\n                    ['exchange_rate', 'number', 'text'],\n                    ['base_currency_code', 'string', 'text']\n                ]\n            },\n            {\n                label: \"Customer\",\n                key: \"custcst\",\n                fields: [\n                    ['vat_number', 'string', 'text'],\n                    ['vat_number_validated_time', 'datetime', 'date'],\n                    ['vat_number_status', 'string', 'text'],\n                    ['allow_direct_debit', 'string', 'text'],\n                    ['is_location_valid', 'string', 'text'],\n                    ['created_at', 'datetime', 'date'],\n                    ['created_from_ip', 'string', 'text'],\n                    ['taxability', 'string', 'text'],\n                    ['entity_code', 'string', 'text'],\n                    ['exempt_number', 'string', 'text'],\n                    ['resource_version', 'number', 'text'],\n                    ['updated_at', 'datetime', 'date'],\n                    ['locale', 'string', 'text'],\n                    ['consolidated_invoicing', 'string', 'text'],\n                    ['billing_date_mode', 'string', 'text'],\n                    ['billing_day_of_week', 'string', 'text'],\n                    ['billing_day_of_week_mode', 'string', 'text'],\n                    ['pii_cleared', 'string', 'text'],\n                    ['fraud_flag', 'string', 'text'],\n                    ['primary_payment_source_id', 'string', 'text'],\n                    ['backup_payment_source_id', 'string', 'text'],\n                    ['promotional_credits', 'number', 'text', 'currency'],\n                    ['unbilled_charges', 'number', 'text', 'currency'],\n                    ['refundable_credits', 'number', 'text', 'currency'],\n                    ['excess_payments', 'number', 'text', 'currency'],\n                    ['deleted', 'string', 'text'],\n                    ['registered_for_gst', 'string', 'text'],\n                    ['business_customer_without_vat_number', 'string', 'text'],\n                    ['customer_type', 'string', 'text'],\n                    ['client_profile_id', 'string', 'text'],\n                ]\n            },\n            {\n                label: \"Order\",\n                key: \"ordercst\",\n                fields: [\n                    ['document_number', 'string', 'text'],\n                    ['invoice_id', 'string', 'text'],\n                    ['cancellation_reason', 'string', 'text'],\n                    ['payment_status', 'string', 'text'],\n                    ['order_type', 'string', 'text'],\n                    ['price_type', 'string', 'text'],\n                    ['reference_id', 'string', 'text'],\n                    ['fulfillment_status', 'string', 'text'],\n                    ['shipping_date', 'datetime', 'date'],\n                    ['tracking_id', 'string', 'text'],\n                    ['batch_id', 'string', 'text'],\n                    ['created_by', 'string', 'text'],\n                    ['shipment_carrier', 'string', 'text'],\n                    ['invoice_round_off_amount', 'number', 'text', 'currency'],\n                    ['tax', 'number', 'text', 'currency'],\n                    ['amount_adjusted', 'number', 'text', 'currency'],\n                    ['refundable_credits_issued', 'number', 'text', 'currency'],\n                    ['refundable_credits', 'number', 'text', 'currency'],\n                    ['rounding_adjustement', 'number', 'text', 'currency'],\n                    ['paid_on', 'datetime', 'date'],\n                    ['shipping_cut_off_date', 'datetime', 'date'],\n                    ['created_at', 'datetime', 'date'],\n                    ['status_update_at', 'datetime', 'date'],\n                    ['delivered_at', 'datetime', 'date'],\n                    ['shipped_at', 'datetime', 'date'],\n                    ['resource_version', 'number', 'text'],\n                    ['updated_at', 'datetime', 'date'],\n                    ['cancelled_at', 'datetime', 'date'],\n                    ['discount', 'number', 'text', 'currency'],\n                    ['sub_total', 'number', 'text', 'currency'],\n                    ['total', 'number', 'text', 'currency'],\n                    ['deleted', 'string', 'text'],\n                    ['currency_code', 'string', 'text'],\n                    ['is_gifted', 'string', 'text'],\n                    ['gift_id', 'string', 'text']\n                ]\n            },\n        ],\n\n        customCompanyFields: [\n            {\n                label: \"Subscription\",\n                key: \"subcst\",\n                fields: [\n                    ['plan_quantity', 'number', 'text'],\n                    ['plan_unit_price', 'number', 'text', 'currency'],\n                    ['plan_amount', 'number', 'text', 'currency'],\n                    ['plan_free_quantity', 'number', 'text']\n\n                ]\n            },\n            {\n                label: \"Customer\",\n                key: \"custcst\",\n                fields: [\n                    ['promotional_credits', 'number', 'text', 'currency'],\n                    ['unbilled_charges', 'number', 'text', 'currency'],\n                    ['refundable_credits', 'number', 'text', 'currency'],\n                    ['excess_payments', 'number', 'text', 'currency'],\n                ]\n            },\n            {\n                label: \"Order\",\n                key: \"ordercst\",\n                fields: [\n                    ['invoice_round_off_amount', 'number', 'text', 'currency'],\n                    ['tax', 'number', 'text', 'currency'],\n                    ['amount_adjusted', 'number', 'text', 'currency'],\n                    ['refundable_credits_issued', 'number', 'text', 'currency'],\n                    ['refundable_credits', 'number', 'text', 'currency'],\n                    ['rounding_adjustement', 'number', 'text', 'currency'],\n                    ['discount', 'number', 'text', 'currency'],\n                    ['sub_total', 'number', 'text', 'currency'],\n                    ['total', 'number', 'text', 'currency']\n                ]\n            },\n        ]\n\n    }\n  };\n  \n  done(config);"
+        }
+      },
+      {
+        "id": 247976,
+        "onSuccess": [
+          "ConfigData"
+        ],
+        "onFailure": [],
+        "name": "InputParams",
+        "type": "script",
+        "properties": {
+          "body": "let apiKey = trigger.args['cb-api-key'];\nlet siteName = trigger.args['cb-site-name'];\nlet type = trigger.args.type;\nlet siteDomain = trigger.args['cb-domain'];\n\nlet retainHubspot = (trigger.args['retainHubspot'] === undefined) ? trigger.args['retainHubspot'] : \"true\";\n\nlet password = \"\";\nlet headers = {\n            Authorization: \"Basic \" + CE.b64(apiKey + \":\" + password),\n            api_key : apiKey\n        };\nlet data = {\n   input: {\n        apiKey: apiKey,\n        siteName: siteName,\n        siteDomain: siteDomain,\n        type: type,\n        cbheaders:headers\n    },\n    cbconfig: {\n        //url: \"https://\" + siteName + \".\" + siteDomain + \"/api/v2/third_party_configurations\",\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/api/third_party_configurations/tpmeta\",\n        query: {\n            \"integration_name\": type,\n        },\n        headers:headers,\n        apiKey: apiKey,\n        siteName: siteName,\n        siteDomain: siteDomain,\n        type: type,\n    },\n    cbfields:{\n       url: \"https://\" + siteName + \".\" + siteDomain + \"/api/v2/custom_field_configs\",\n        headers:headers,\n        apiKey: apiKey,\n        siteName: siteName,\n        siteDomain: siteDomain,\n        type: type,\n    },\n    config: {\n        //url: \"https://\" + siteName + \".\" + siteDomain + \"/api/v2/third_party_configurations\",\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/api/third_party_configurations/tpmeta\",\n        customFieldUrl: \"https://\" + siteName + \".\" + siteDomain + \"/api/v2/custom_field_configs\",\n        auth: {\n            Authorization: \"Basic \" + CE.b64(apiKey + \":\" + password)\n        },\n        query: {\n            integration_name: type\n        }\n    },\n    update: {\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/integrations/update_tp_integ_conf\",\n        headers: {\n            \"Content-Type\": \"application/json\",\n            \"cache-control\": \"no-cache\"\n        },\n        body: {\n            integration_name: type,\n            site_name: siteName,\n            api_key: apiKey\n        }\n    },\n};\ndone(data);"
+        }
+      },
+      {
+        "id": 247977,
+        "onSuccess": [
+          "CreateIn"
+        ],
+        "onFailure": [
+          "DoDeleteCustomProperties"
+        ],
+        "name": "LoopOverCustomProperties",
+        "type": "loop",
+        "properties": {
+          "list": "${steps.CustomGroups.creates}"
+        }
+      },
+      {
+        "id": 247978,
+        "onSuccess": [
+          "DeletcustomProperties"
+        ],
+        "onFailure": [
+          "LoopOverHubGroups"
+        ],
+        "name": "LoopOverDeleteProperties",
+        "type": "loop",
+        "properties": {
+          "list": "${steps.CustomGroups.deletes}"
+        }
+      },
+      {
+        "id": 247979,
+        "onSuccess": [
+          "HubIn"
+        ],
+        "onFailure": [
+          "DoneCustom"
+        ],
+        "name": "LoopOverHubGroups",
+        "type": "loop",
+        "properties": {
+          "list": "${steps.HubUrl.config.groups}"
+        }
+      },
+      {
+        "id": 247980,
+        "onSuccess": [
+          "LoopOverHubGroups"
+        ],
+        "onFailure": [],
+        "name": "UpdateCustomFieldInfo",
+        "type": "script",
+        "properties": {
+          "body": "let customefields = steps.HubUrl.config.customefields;\nlet list = steps.GetCBCustomFields.data;\nif(list!==undefined && list.list!==undefined && list.list.length>0) {\n  list = list.list;\n}\n\nif(list!==undefined){\n  let listMap = {};\n  for(var i=0;i<list.length;i++){\n    let obj = list[i];\n    if(obj.custom_field_config !== undefined) {\n      if(obj.custom_field_config.entity_type === \"customer\") {\n        listMap[\"custcst_\"+obj.custom_field_config.api_name] = obj.custom_field_config;\n      }else if(obj.custom_field_config.entity_type === \"subscription\") {\n        listMap[\"subcst_\"+obj.custom_field_config.api_name] = obj.custom_field_config;\n      }\n    }\n    \n  }\n    let syncRulesFields = steps.ConfigData.configJson.config_json.cloudElements.syncRulesFields;\n  if (syncRulesFields === undefined) {\n    syncRulesFields = {\n      \"company\": {\n\n      },\n      \"contact\": {\n\n      },\n      \"deal\": {\n      },\n      \"sync\": \"false\"\n    };\n\n  } else {\n    if (syncRulesFields.company === undefined || syncRulesFields.company === \"\") {\n      syncRulesFields.company = {};\n    }\n    if (syncRulesFields.contact === undefined || syncRulesFields.contact === \"\") {\n      syncRulesFields.contact = {};\n    }\n    if (syncRulesFields.deal === undefined || syncRulesFields.deal === \"\") {\n      syncRulesFields.deal = {};\n    }\n  }\n  \n  let contactKeys = Object.keys(syncRulesFields.contact);\n  let subKeys = Object.keys(syncRulesFields.deal);\n  let cKeys =[];\n  let cMap = {};\n  for (var i = 0; i < contactKeys.length; i++) {\n    if(contactKeys[i].startsWith(\"custcst_cf_\") || contactKeys[i].startsWith(\"subcst_cf_\") ) {\n      if(cMap[contactKeys[i]] === undefined){\n        cKeys.push(contactKeys[i]);\n        cMap[contactKeys[i]] =contactKeys[i];\n      }\n    }\n  }\n  for (var i = 0; i < subKeys.length; i++) {\n    if(subKeys[i].startsWith(\"custcst_cf_\") || subKeys[i].startsWith(\"subcst_cf_\") ) {\n      if(cMap[subKeys[i]] === undefined){\n        cKeys.push(subKeys[i]);\n        cMap[subKeys[i]] =subKeys[i];\n      }\n    }\n  }\n  \n    for (var i = 0; i < cKeys.length; i++) {\n      if(listMap[cKeys[i]] !== undefined) {\n         let type = listMap[cKeys[i]].field_datatype;\n         let keyname = listMap[cKeys[i]].api_name;\n         \n         if(listMap[cKeys[i]].entity_type === \"customer\") {\n           \n          \n           if(type ===\"date\" || type ===\"timestamp\") {\n            \n             customefields[1].fields.push([keyname, 'datetime', 'date']);\n           }else if(type ===\"long\"){\n             customefields[1].fields.push([keyname, 'number', 'text']);\n           }else {\n             customefields[1].fields.push([keyname, 'string', 'text']);\n           }\n           \n         }else if(listMap[cKeys[i]].entity_type === \"subscription\") {\n            if(type ===\"date\" || type ===\"timestamp\") {\n             customefields[0].fields.push([keyname, 'datetime', 'date']);\n           }else if(type ===\"long\"){\n             customefields[0].fields.push([keyname, 'number', 'text']);\n           }else {\n             customefields[0].fields.push([keyname, 'string', 'text']);\n           }\n         }\n      }\n    }\n  \n  \nsteps.HubUrl.customefields= customefields;\n  \n}\ndone(steps.HubUrl.customefields);"
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "id": 27906,
+        "onSuccess": [
+          "InputParams"
+        ],
+        "onFailure": [],
+        "type": "manual",
+        "async": true,
+        "name": "trigger",
+        "properties": {}
+      }
+    ],
+    "subFormulas": [
+      {
+        "id": 31330,
+        "name": "ChargebeeGet",
+        "userId": 36293,
+        "accountId": 29640,
+        "createdDate": "2019-11-13T14:36:04Z",
+        "steps": [
+          {
+            "id": 247686,
+            "onSuccess": [
+              "ChargebeeGetCBDelay2"
+            ],
+            "onFailure": [
+              "ChargebeeGetResult"
+            ],
+            "name": "ChargebeeGetCallAgainCB",
+            "type": "filter",
+            "properties": {
+              "body": "let code = \"\";\nif(steps.ChargebeeGetGetCBData !== undefined && steps.ChargebeeGetGetCBData.response !== undefined) {\n  code = steps.ChargebeeGetGetCBData.response.code;\n}\nif(steps.ChargebeeGetInputParams.intervel.length > 0 && steps.ChargebeeGetInputParams.retryCode[code] !== undefined) {\n  steps.ChargebeeGetInputParams.delay.query.delay = steps.ChargebeeGetInputParams.intervel.pop();\n  done(true);\n}else {\n  done(false);\n}\n"
+            }
+          },
+          {
+            "id": 247687,
+            "onSuccess": [
+              "ChargebeeGetCBDelay"
+            ],
+            "onFailure": [
+              "ChargebeeGetResult2"
+            ],
+            "name": "ChargebeeGetCallAgainHttp",
+            "type": "filter",
+            "properties": {
+              "body": "if(steps.ChargebeeGetInputParams.intervel.length > 0 && steps.ChargebeeGetInputParams.retryCode[steps.ChargebeeGetGetHttpData.response.code] !== undefined) {\n  steps.ChargebeeGetInputParams.delay.query.delay = steps.ChargebeeGetInputParams.intervel.pop();\n  done(true);\n}else {\n  done(false);\n}\n"
+            }
+          },
+          {
+            "id": 247688,
+            "onSuccess": [
+              "ChargebeeGetGetHttpData"
+            ],
+            "onFailure": [],
+            "name": "ChargebeeGetCBDelay",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "retryAttempts": "5",
+              "retry": "true",
+              "headers": "${steps.ChargebeeGetInputParams.delay.headers}",
+              "retryStatusCodes": "500-599,429",
+              "query": "${steps.ChargebeeGetInputParams.delay.query}",
+              "retryDelay": "500",
+              "url": "${steps.ChargebeeGetInputParams.delay.url}"
+            }
+          },
+          {
+            "id": 247689,
+            "onSuccess": [
+              "ChargebeeGetGetCBData"
+            ],
+            "onFailure": [],
+            "name": "ChargebeeGetCBDelay2",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "retryAttempts": "5",
+              "retry": "true",
+              "headers": "${steps.ChargebeeGetInputParams.delay.headers}",
+              "retryStatusCodes": "500-599,429",
+              "query": "${steps.ChargebeeGetInputParams.delay.query}",
+              "url": "${steps.ChargebeeGetInputParams.delay.url}",
+              "retryDelay": "500"
+            }
+          },
+          {
+            "id": 247690,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "ChargebeeGetError",
+            "type": "script",
+            "properties": {
+              "body": "done({\n  cb_status:\"failure\",\n  cb_error_code:\"formula_invalid_url\"\n});"
+            }
+          },
+          {
+            "id": 247691,
+            "onSuccess": [
+              "ChargebeeGetCallAgainCB"
+            ],
+            "onFailure": [
+              "ChargebeeGetCallAgainCB"
+            ],
+            "name": "ChargebeeGetGetCBData",
+            "type": "elementRequest",
+            "properties": {
+              "method": "GET",
+              "acceptableStatusCodes": "200-600",
+              "retryAttempts": "5",
+              "body": "${steps.ChargebeeGetInputParams.bodydata}",
+              "retry": "true",
+              "api": "${steps.ChargebeeGetInputParams.url}",
+              "headers": "",
+              "query": "${steps.ChargebeeGetInputParams.query}",
+              "retryStatusCodes": "500-599,429",
+              "elementInstanceId": "${config.chargebee}",
+              "retryDelay": "500"
+            }
+          },
+          {
+            "id": 247692,
+            "onSuccess": [
+              "ChargebeeGetCallAgainHttp"
+            ],
+            "onFailure": [
+              "ChargebeeGetCallAgainHttp"
+            ],
+            "name": "ChargebeeGetGetHttpData",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "acceptableStatusCodes": "200-600",
+              "body": "${steps.ChargebeeGetInputParams.bodydata}",
+              "headers": "${steps.ChargebeeGetInputParams.headers}",
+              "query": "${steps.ChargebeeGetInputParams.query}",
+              "url": "${steps.ChargebeeGetInputParams.url}"
+            }
+          },
+          {
+            "id": 247693,
+            "onSuccess": [
+              "ChargebeeGetIsValidUrl"
+            ],
+            "onFailure": [],
+            "name": "ChargebeeGetInputParams",
+            "type": "script",
+            "properties": {
+              "body": "let url = trigger.args.url;\nlet query = trigger.args.query;\nlet apiKey = trigger.args.apiKey;\nlet headers = trigger.args.headers;\nlet siteDomain = trigger.args.siteDomain;\nlet siteName = trigger.args.siteName;\nlet type = trigger.args.type;\nlet bodydata = trigger.args.bodydata;\nif (bodydata === undefined)\n{\n  bodydata = {};\n}\n\n\nlet intervel = [];\nintervel.push(5000);\nintervel.push(4000);\nintervel.push(3000);\nintervel.push(2000);\nintervel.push(1000);\n\nif (query === undefined) {\n    query = {};\n}\nif (headers === undefined) {\n    headers = {};\n}\ndone({\n    url: url,\n    query: query,\n    bodydata: bodydata,\n    //intervel:[5000,10000,20000,40000,80000],\n    intervel: intervel,\n    retryCode: {\n        503: true,\n        429: true,\n        502: true,\n        403: true,\n        400: true,\n    },\n    hardStop: {\n        503: true,\n        429: true,\n        502: true,\n        403: true,\n        400: true,\n        500:true,\n        401:true\n    },\n    headers: headers,\n    delay: {\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/api/ipaasdelay\",\n        query: {\n            delay: 2000\n        },\n        headers: {\n            \"api_key\": apiKey\n        }\n    }\n});"
+            }
+          },
+          {
+            "id": 247694,
+            "onSuccess": [
+              "ChargebeeGetGetHttpData"
+            ],
+            "onFailure": [
+              "ChargebeeGetGetCBData"
+            ],
+            "name": "ChargebeeGetIsHttp",
+            "type": "filter",
+            "properties": {
+              "body": "done(steps.ChargebeeGetInputParams.url.startsWith(\"https://\"));"
+            }
+          },
+          {
+            "id": 247695,
+            "onSuccess": [
+              "ChargebeeGetIsHttp"
+            ],
+            "onFailure": [
+              "ChargebeeGetError"
+            ],
+            "name": "ChargebeeGetIsValidUrl",
+            "type": "filter",
+            "properties": {
+              "body": "done(steps.ChargebeeGetInputParams.url !== undefined && steps.ChargebeeGetInputParams.url!== \"\");"
+            }
+          },
+          {
+            "id": 247696,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "ChargebeeGetResult",
+            "type": "script",
+            "properties": {
+              "body": "let code = 600;\nif(steps.ChargebeeGetGetCBData !== undefined && steps.ChargebeeGetGetCBData.response !== undefined) {\n  code = steps.ChargebeeGetGetCBData.response.code;\n}\nif(code < 300) {\n  done({\n    cb_status:\"success\",\n    data:steps.ChargebeeGetGetCBData.response.body\n  });\n}else {\n  let cb_error_code = \"formula_default_error\";\n\n  let hardstop = steps.ChargebeeGetInputParams.hardStop[code] !== undefined;\n  if(steps.ChargebeeGetGetCBData!== undefined && steps.ChargebeeGetGetCBData.response!== undefined && steps.ChargebeeGetGetCBData.response.body!== undefined && steps.ChargebeeGetGetCBData.response.body.error_code !== undefined) {\n    cb_error_code = steps.ChargebeeGetGetCBData.response.body.error_code;\n  }\n  done({\n    cb_status:\"failure\",\n    cb_error_code:cb_error_code,\n    cb_exit:hardstop,\n    msg:steps.ChargebeeGetGetCBData.response,\n    cb_status_code:code\n  });\n}\n\n"
+            }
+          },
+          {
+            "id": 247697,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "ChargebeeGetResult2",
+            "type": "script",
+            "properties": {
+              "body": "if(steps.ChargebeeGetGetHttpData.response.code <300) {\n  done({\n    cb_status:\"success\",\n    data:steps.ChargebeeGetGetHttpData.response.body\n  });\n}else {\n  let cb_error_code = \"formula_default_error\";\n\n  let hardstop = steps.ChargebeeGetInputParams.hardStop[steps.ChargebeeGetGetHttpData.response.code] !== undefined;\n  if(steps.ChargebeeGetGetHttpData.response.body!== undefined && steps.ChargebeeGetGetHttpData.response.body.error_code !== undefined) {\n    cb_error_code = steps.ChargebeeGetGetHttpData.response.body.error_code;\n  }\n  done({\n    cb_status:\"failure\",\n    cb_error_code:cb_error_code,\n    cb_exit:hardstop,\n    cb_status_code:steps.ChargebeeGetGetHttpData.response.code\n  });\n}\n\n"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "id": 27793,
+            "onSuccess": [
+              "ChargebeeGetInputParams"
+            ],
+            "onFailure": [],
+            "type": "manual",
+            "async": true,
+            "name": "trigger",
+            "properties": {}
+          }
+        ],
+        "engine": "v3",
+        "active": true,
+        "debugLoggingEnabled": false,
+        "singleThreaded": false,
+        "configuration": []
+      },
+      {
+        "id": 31333,
+        "name": "HubSpotPost",
+        "userId": 36293,
+        "accountId": 29640,
+        "createdDate": "2019-11-13T14:37:04Z",
+        "steps": [
+          {
+            "id": 247712,
+            "onSuccess": [
+              "HubSpotPostCBDelay"
+            ],
+            "onFailure": [
+              "HubSpotPostResult2"
+            ],
+            "name": "HubSpotPostCallAgainHttp",
+            "type": "filter",
+            "properties": {
+              "body": "\nif(steps.HubSpotPostInputParams.intervel.length > 0 && steps.HubSpotPostInputParams.retryCode[steps.HubSpotPostPostHttpData.response.code] !== undefined) {\n  steps.HubSpotPostInputParams.delay.query.delay = steps.HubSpotPostInputParams.intervel.pop();\n  done(true);\n}else {\n  done(false);\n}\n"
+            }
+          },
+          {
+            "id": 247713,
+            "onSuccess": [
+              "HubSpotPostPostHttpData"
+            ],
+            "onFailure": [],
+            "name": "HubSpotPostCBDelay",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "headers": "${steps.HubSpotPostInputParams.delay.headers}",
+              "query": "${steps.HubSpotPostInputParams.delay.query}",
+              "url": "${steps.HubSpotPostInputParams.delay.url}"
+            }
+          },
+          {
+            "id": 247714,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "HubSpotPostError",
+            "type": "script",
+            "properties": {
+              "body": "done({\n  cb_status:\"failure\",\n  cb_error_code:\"hubspot_invalid_url\"\n});"
+            }
+          },
+          {
+            "id": 247715,
+            "onSuccess": [
+              "HubSpotPostIsValidUrl"
+            ],
+            "onFailure": [],
+            "name": "HubSpotPostInputParams",
+            "type": "script",
+            "properties": {
+              "body": "let url = trigger.args.url;\nlet query = trigger.args.query;\nlet body = trigger.args.body;\nlet apiKey = trigger.args.apiKey;\nlet headers = trigger.args.headers;\nlet siteDomain = trigger.args.siteDomain;\nlet siteName = trigger.args.siteName;\nlet type = trigger.args.type;\n\n\nlet intervel = [];\nintervel.push(5000);\nintervel.push(4000);\nintervel.push(3000);\nintervel.push(2000);\nintervel.push(1000);\n\nif (query === undefined) {\n    query = {};\n}\nif (headers === undefined) {\n    headers = {};\n}\ndone({\n    url: url,\n    query: query,\n    body:body,\n    //intervel:[5000,10000,20000,40000,80000],\n    intervel: intervel,\n    retryCode: {\n        429: true,\n        502: true,\n        504: true,\n    },\n    hardStop: {\n        401: true,\n        403: true,\n        429: true,\n        502: true,\n        504: true,\n    },\n    headers: headers,\n    delay: {\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/api/ipaasdelay\",\n        query: {\n            delay: 2000\n        },\n        headers: {\n            \"api_key\": apiKey\n        }\n    }\n});"
+            }
+          },
+          {
+            "id": 247716,
+            "onSuccess": [
+              "HubSpotPostPostHttpData"
+            ],
+            "onFailure": [
+              "HubSpotPostError"
+            ],
+            "name": "HubSpotPostIsValidUrl",
+            "type": "filter",
+            "properties": {
+              "body": "let inputParams = steps.HubSpotPostInputParams;\ndone(inputParams.url !== undefined && inputParams.url!== \"\");"
+            }
+          },
+          {
+            "id": 247717,
+            "onSuccess": [
+              "HubSpotPostCallAgainHttp"
+            ],
+            "onFailure": [],
+            "name": "HubSpotPostPostHttpData",
+            "type": "httpRequest",
+            "properties": {
+              "method": "POST",
+              "acceptableStatusCodes": "200-600",
+              "body": "${steps.HubSpotPostInputParams.body}",
+              "headers": "${steps.HubSpotPostInputParams.headers}",
+              "query": "",
+              "url": "${steps.HubSpotPostInputParams.url}"
+            }
+          },
+          {
+            "id": 247718,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "HubSpotPostResult2",
+            "type": "script",
+            "properties": {
+              "body": "if(steps.HubSpotPostPostHttpData.response.code <300) {\n  done({\n    cb_status:\"success\",\n    data:steps.HubSpotPostPostHttpData.response.body,\n    cb_code:steps.HubSpotPostPostHttpData.response.code,\n  });\n}else {\n  let cb_error_code = \"hubspot_default_error\";\n\n  let hardstop = steps.HubSpotPostInputParams.hardStop[steps.HubSpotPostPostHttpData.response.code] !== undefined;\n  if(steps.HubSpotPostPostHttpData.response.body!== undefined && steps.HubSpotPostPostHttpData.response.body.category !== undefined) {\n    cb_error_code = \"hubspot_\"+steps.HubSpotPostPostHttpData.response.body.category;\n  }\n  done({\n    cb_status:\"failure\",\n    cb_error_code:cb_error_code,\n    cb_exit:hardstop,\n    cb_code:steps.HubSpotPostPostHttpData.response.code,\n    response_body : steps.HubSpotPostPostHttpData.response\n  });\n}\n"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "id": 27796,
+            "onSuccess": [
+              "HubSpotPostInputParams"
+            ],
+            "onFailure": [],
+            "type": "manual",
+            "async": true,
+            "name": "trigger",
+            "properties": {}
+          }
+        ],
+        "engine": "v3",
+        "active": true,
+        "debugLoggingEnabled": false,
+        "singleThreaded": false,
+        "configuration": []
+      },
+      {
+        "id": 31332,
+        "name": "HubSpotGet",
+        "userId": 36293,
+        "accountId": 29640,
+        "createdDate": "2019-11-13T14:36:41Z",
+        "steps": [
+          {
+            "id": 247705,
+            "onSuccess": [
+              "HubSpotGetCBDelay"
+            ],
+            "onFailure": [
+              "HubSpotGetResult2"
+            ],
+            "name": "HubSpotGetCallAgainHttp",
+            "type": "filter",
+            "properties": {
+              "body": "if(steps.HubSpotGetInputParams.intervel.length > 0 && steps.HubSpotGetInputParams.retryCode[steps.HubSpotGetGetHttpData.response.code] !== undefined) {\n  steps.HubSpotGetInputParams.delay.query.delay = steps.HubSpotGetInputParams.intervel.pop();\n  done(true);\n}else {\n  done(false);\n}\n"
+            }
+          },
+          {
+            "id": 247706,
+            "onSuccess": [
+              "HubSpotGetGetHttpData"
+            ],
+            "onFailure": [],
+            "name": "HubSpotGetCBDelay",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "headers": "${steps.HubSpotGetInputParams.delay.headers}",
+              "query": "${steps.HubSpotGetInputParams.delay.query}",
+              "url": "${steps.HubSpotGetInputParams.delay.url}"
+            }
+          },
+          {
+            "id": 247707,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "HubSpotGetError",
+            "type": "script",
+            "properties": {
+              "body": "done({\n  cb_status:\"failure\",\n  cb_error_code:\"hubspot_invalid_url\"\n});"
+            }
+          },
+          {
+            "id": 247708,
+            "onSuccess": [
+              "HubSpotGetCallAgainHttp"
+            ],
+            "onFailure": [],
+            "name": "HubSpotGetGetHttpData",
+            "type": "httpRequest",
+            "properties": {
+              "method": "GET",
+              "acceptableStatusCodes": "200-600",
+              "body": "",
+              "headers": "${steps.HubSpotGetInputParams.headers}",
+              "query": "${steps.HubSpotGetInputParams.query}",
+              "url": "${steps.HubSpotGetInputParams.url}"
+            }
+          },
+          {
+            "id": 247709,
+            "onSuccess": [
+              "HubSpotGetIsValidUrl"
+            ],
+            "onFailure": [],
+            "name": "HubSpotGetInputParams",
+            "type": "script",
+            "properties": {
+              "body": "let url = trigger.args.url;\nlet query = trigger.args.query;\nlet apiKey = trigger.args.apiKey;\nlet headers = trigger.args.headers;\nlet siteDomain = trigger.args.siteDomain;\nlet siteName = trigger.args.siteName;\nlet type = trigger.args.type;\n\n\nlet intervel = [];\nintervel.push(5000);\nintervel.push(4000);\nintervel.push(3000);\nintervel.push(2000);\nintervel.push(1000);\n\nif (query === undefined) {\n    query = {};\n}\nif (headers === undefined) {\n    headers = {};\n}\ndone({\n    url: url,\n    query: query,\n    //intervel:[5000,10000,20000,40000,80000],\n    intervel: intervel,\n    retryCode: {\n        429: true,\n        502: true,\n        504: true,\n    },\n    hardStop: {\n        401: true,\n        403: true,\n        429: true,\n        502: true,\n        504: true,\n    },\n    headers: headers,\n    delay: {\n        url: \"https://\" + siteName + \".integrations.\" + siteDomain + \"/api/ipaasdelay\",\n        query: {\n            delay: 2000\n        },\n        headers: {\n            \"api_key\": apiKey\n        }\n    }\n});"
+            }
+          },
+          {
+            "id": 247710,
+            "onSuccess": [
+              "HubSpotGetGetHttpData"
+            ],
+            "onFailure": [
+              "HubSpotGetError"
+            ],
+            "name": "HubSpotGetIsValidUrl",
+            "type": "filter",
+            "properties": {
+              "body": "done(steps.HubSpotGetInputParams.url !== undefined && steps.HubSpotGetInputParams.url!== \"\");"
+            }
+          },
+          {
+            "id": 247711,
+            "onSuccess": [],
+            "onFailure": [],
+            "name": "HubSpotGetResult2",
+            "type": "script",
+            "properties": {
+              "body": "let response  = steps.HubSpotGetGetHttpData.response;\nif(response.code <300) {\n  done({\n    cb_status:\"success\",\n    data:response.body,\n    cb_code:response.code,\n  });\n}else {\n  let cb_error_code = \"hubspot_default_error\";\n\n  let hardstop = steps.HubSpotGetInputParams.hardStop[response.code] !== undefined;\n  if(response.body!== undefined && response.body.category !== undefined) {\n    cb_error_code = \"hubspot_\" +response.body.category;\n  }\n  done({\n    cb_status:\"failure\",\n    cb_error_code:cb_error_code,\n    cb_exit:hardstop,\n    cb_code:response.code,\n  });\n}\n"
+            }
+          }
+        ],
+        "triggers": [
+          {
+            "id": 27795,
+            "onSuccess": [
+              "HubSpotGetInputParams"
+            ],
+            "onFailure": [],
+            "type": "manual",
+            "async": true,
+            "name": "trigger",
+            "properties": {}
+          }
+        ],
+        "engine": "v3",
+        "active": true,
+        "debugLoggingEnabled": false,
+        "singleThreaded": false,
+        "configuration": []
+      }
+    ],
+    "engine": "v3",
+    "active": true,
+    "debugLoggingEnabled": false,
+    "singleThreaded": false,
+    "configuration": []
+  }
