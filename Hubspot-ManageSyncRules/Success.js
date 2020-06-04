@@ -1,3 +1,4 @@
+const _ = require('lodash');
 let cloudElements = steps.getConfigApi.data.third_party_configuration.config_json.cloudElements;
 let syncRulesContacts = cloudElements.syncRulesContacts;
 let syncRulesDeals = cloudElements.syncRulesDeals;
@@ -8,9 +9,16 @@ let contact;
 let deal;
 let syncFields = "false";
 
-let MappedFieldChargebee = (syncRulesContacts.MappedFieldChargebee !== undefined) ? syncRulesContacts.MappedFieldChargebee: "email";
+let getDefault = (param,defaultValue)=>{ 
+  if(param !== undefined) { 
+    return param;}
+  return defaultValue;
+}
+let HubspotStageToggle = getDefault(syncRulesContacts.HubspotStageToggle, "true");
 
-let MappedFieldHubspot = (syncRulesContacts.MappedFieldHubspot !== undefined) ? syncRulesContacts.MappedFieldHubspot : "email";
+let MappedFieldChargebee = getDefault(syncRulesContacts.MappedFieldChargebee, "email");
+
+let MappedFieldHubspot = getDefault(syncRulesContacts.MappedFieldHubspot, "email");
 
 let cbcustomFields=steps.getCustomApi.data;
 if(cbcustomFields!==undefined && cbcustomFields.response !== undefined) {
@@ -429,6 +437,19 @@ let DoNothing = {
     dOption
   ]
 };
+  
+let dynamicToggleRequest =  {
+    type: "ON_CHANGE_FETCH_INPUT",
+    apiEndPoint: {
+      apiUrl: steps.getFormulaDetails.dynamicToggle.url,
+      type: "GET",
+      headers: {
+        "Elements-Formula-Instance-Id": steps.getFormulaDetails.dynamicToggle.id,
+      }
+    },
+  };
+  
+let stages = steps.getLifeCycleStages.stages;
 
 let card = {
   cards: [
@@ -446,7 +467,7 @@ let card = {
     },
     {
       "card": {
-        "type": "INPUT",
+        "type": "DYNAMIC_INPUT",
         "params": [
           {
             "dispName": "Choose customers you'd like to sync",
@@ -480,85 +501,15 @@ let card = {
             },
             "defaultVal": syncRulesContacts.HubSpotContactMatch
           },
-          {
-            "dispName": "Choose the Lifecycle Stage in HubSpot you'd like to create/update the contact in, when the Chargebee customer",
-            "req": "false",
-            "type": "TEXTLABEL",
-            "id": "HubSpotContactMatch-id"
-          },
-          {
-            "desc": "Has no subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "NoSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.NoSubscription
-          },
-          {
-            "desc": "Has an In-Trial subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "TrialSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.TrialSubscription
-          },
-          {
-            "desc": "Has an Active subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "ActiveSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.ActiveSubscription
-          },
-          {
-            "desc": "Has a Cancelled subscription",
-            "req": "false",
-            "type": "DROPDOWN",
-            "id": "CanceledSubscription",
-            "allowedValues": {
-              "select": "Select",
-              "subscriber": "Subscriber",
-              "lead": "Lead",
-              "marketingqualifiedlead": "Marketing Qualified lead",
-              "salesqualifiedlead": "Sales Qualified lead",
-              "opportunity": "Opportunity",
-              "customer": "Customer",
-              "evangelist": "Evangelist",
-              "other": "Other"
-            },
-            "defaultVal": syncRulesContacts.LifecycleStage.CanceledSubscription
-          },
-
+          {       
+            "dispName":"Sync and Update Lifecycle stages in Hubspot",
+              "desc":"You can map subscription status of your Chargebee customers to the different lifecycle stages of a contact in Hubspot",
+              "type":"TOGGLE",
+              "id":"HubspotStageToggle",
+              "defaultVal": HubspotStageToggle,
+              "isDynamic":"true",
+              "request": dynamicToggleRequest
+        }
         ]
       },
       "id": "check1",
@@ -656,6 +607,11 @@ let card = {
   "dismissText": "Dismiss"
 };
 
+if(HubspotStageToggle === "true")
+{
+    let newParams = _.concat(card.cards[1].card.params, stages);
+    card.cards[1].card.params = newParams
+}
 
 let feildsCard = {
   "card": {
@@ -765,7 +721,7 @@ for(var i=0;i<customCompanyFields.length;i++){
 
   for(var j=0;j<fld.fields.length;j++){
       var es = fld.fields[j];
-      var desc =  fld.label + " " + es[0].replace(/_/g, " ");
+      let desc =  fld.label + " " + es[0].replace(/_/g, " ");
       var id = fld.key+"_"+es[0];    
       let companyObj = {
           "type": "CHECKBOX",
@@ -829,6 +785,4 @@ if (steps.GetCBOrder.response.code === 200 && steps.GetCBOrder.response.body.ord
   });
 
 }
-
 done(card);
-//done({"ll":customefields});
